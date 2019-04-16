@@ -1,0 +1,349 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Be An Ambassador</title>{% endblock %}
+{% block body %}
+
+    <section class="ambassador-top-content secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                        <h1>{{ top.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                        <p>{{ top.Text|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if done is defined %}
+
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content" style="height: 80px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Thank you! Your message has been sent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    <div class="ambassador-page-content-wrapper">
+        <section class="community-second">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-md-6 col-xs-12 left-aligned">
+                        {% autoescape %}
+                            {{ topContent.Text|raw }}
+                        {% endautoescape %}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="meet-armen-video" style="background: linear-gradient(
+                                rgba(0, 0, 0, 0.2),
+                                rgba(0, 0, 0, 0.2)
+                                ), url('../uploads/images/{{ topContent.Image }}') no-repeat; background-size:cover; height: 335px; position: relative;">
+                            <div class="title-and-play-button-wrapper">
+                                {% autoescape %}
+                                    <h3>{{ topContent.Title|raw }}</h3>
+                                {% endautoescape %}
+                                <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                             aria-hidden="true">
+                            <div class="modal-dialogg">
+                                <div class="modal-contentt">
+                                    <div class="modal-body">
+                                        <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                        <div class="video-container">
+                                            <iframe width="560" height="315" src="{{ topContent.videoLink }}" frameborder="0"  allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="become-ambassador-btn" data-toggle="modal" data-target="#become_ambassador">Become an Ambassador Today!</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="become_ambassador" tabindex="-1" role="dialog" aria-labelledby="become_ambassador">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button style="color: #000000; opacity: 1; background: transparent; font-size: 24px;" type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                        </div>
+                                        <div class="become-ambassador-form">
+                                            <h4 class="text-center">THANK YOU FOR YOUR INTEREST IN BECOMING AN AMBASSADOR</h4>
+                                            <p class="text-center">Interested in learning more about how to become an Ambassador for ATP, Sign up here and someone will reach out to you soon.</p>
+                                            {{ form_start(form) }}
+                                            <form action="">
+                                                <div class="two-inputs-wrapper">
+                                                    <div>
+                                                        <h6>FIRST NAME *</h6>
+                                                        {{ form_widget(form.firstName, { 'attr': {'placeholder': 'Your Name'|trans}}) }}
+                                                        <div style="color: red;">{{ form_errors(form.firstName) }} </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6>LAST NAME *</h6>
+                                                        {{ form_widget(form.lastName, { 'attr': {'placeholder': 'Your Last Name'|trans}}) }}
+                                                        <div style="color: red;">{{ form_errors(form.lastName) }} </div>
+                                                    </div>
+                                                </div>
+                                                <div class="two-inputs-wrapper">
+                                                    <div>
+                                                        <h6>CITY *</h6>
+                                                        {{ form_widget(form.city, { 'attr': {'placeholder': 'Your City'|trans}}) }}
+                                                        <div style="color: red;">{{ form_errors(form.city) }} </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6>E-MAIL *</h6>
+                                                        {{ form_widget(form.email, { 'attr': {'placeholder': 'Your E-mail Address'|trans}}) }}
+                                                        <div style="color: red;">{{ form_errors(form.email) }} </div>
+                                                    </div>
+                                                </div>
+                                                <div class="two-inputs-wrapper">
+                                                    <div>
+                                                        <h6>ADDRESS *</h6>
+                                                        {{ form_widget(form.address, { 'attr': {'placeholder': 'Your Address'|trans}}) }}
+                                                        <div style="color: red;">{{ form_errors(form.address) }} </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6>PHONE *</h6>
+                                                        {{ form_widget(form.phone, { 'attr': {'placeholder': 'Phone Number'|trans}}) }}
+                                                        <div style="color: red;">{{ form_errors(form.phone) }} </div>
+                                                    </div>
+                                                </div>
+                                                <h6>WHY ARE YOU INTERESTED IN SUPPORT THE MISSION ATP?</h6>
+                                                {{ form_widget(form.message, { 'attr': {'placeholder': 'Your Message'|trans}}) }}
+                                                <div style="color: red;">{{ form_errors(form.message) }} </div>
+                                                <h6>COMMENTS</h6>
+                                                {{ form_widget(form.comments, { 'attr': {'placeholder': 'Your Message'|trans}}) }}
+                                                <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                                                <div class="text-center">
+                                                    {{ form_widget(form.send, { 'attr': {'label': "Become an Ambassador Today!", 'style': "background-color: #777777", 'disabled': 'disabled'}}) }}
+                                                </div>
+                                            </form>
+                                            {{ form_end(form) }}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="our-ambassadors">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>MEET OUR ATP AMBASSADORS</h4>
+                    </div>
+                </div>
+                {% set total = 0 %}
+                <div class="row">
+                    {% for item in content %}
+                        {#{% if total == 1 %}#}
+                            {#<div class="row">#}
+                        {#{% endif %}#}
+                        <div class="col-md-6 col-xs-12">
+                            <div class="photo-and-text-wrapper">
+                                <div>
+                                    <img  src="../uploads/images/{{ item.Image }}" alt="">
+                                </div>
+                                <div>
+                                    {% autoescape %}
+                                        {{ item.Title|raw }}
+                                    {% endautoescape %}
+                                    {% autoescape %}
+                                        <p class="ambassador-speech">
+                                            {{ item.TextTop|raw }}
+                                        </p>
+                                    {% endautoescape %}
+                                </div>
+                            </div>
+                            {% autoescape %}
+                                <p>
+                                    {{ item.TextBottom|raw }}
+                                </p>
+                            {% endautoescape %}
+                        </div>
+                        {#{% if total == 3 %}#}
+                            {#</div>#}
+                        {#{% endif %}#}
+                        {#{% set total = total + 1 %}#}
+                    {% endfor %}
+
+            </div>
+                <div class="text-center">
+                    <a href="{{ path('bndonate') }}">
+                        <button class="donate-btn">Donate</button>
+                    </a>
+                </div>
+        </section>
+
+        <section class="community-last-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>FEATURED CONTENT</h4>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="row">
+                    {% for item in bottom %}
+                    {% if item.Position == 'first' %}
+                    <div class="col-md-6">
+                        <div class="first-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                            {% elseif item.Position == 'second' %}
+                            <div class="col-md-3">
+                                <div class="second-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                    {% elseif item.Position == 'third' %}
+                                    <div class="col-md-3">
+                                        <div class="third-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                            {% endif %}
+                                            {% autoescape %}
+                                                <h3>
+                                                    {{ item.Text|raw }}
+                                                </h3>
+                                            {% endautoescape %}
+                                            {% if item.LinkType == 'outter' %}
+                                            <a href="{{ item.Link }}">
+                                                <button> Donate</button>
+                                            </a>
+                                            {% elseif item.LinkType == 'inner' %}
+                                                <p>{{ item.createdAt.format('d M, Y') }}</p>
+                                                <a href="{{ item.Link }}">Read More</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+        </section>
+
+    </div>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_firstName').val() && $('#form_lastName').val() && $('#form_city').val() && $('#form_email').val() && $('#form_address').val() && $('#form_phone').val() && $('#form_message').val()){
+                $('#form_send').css("background-color", "#6FD054");
+                $('#form_send').removeAttr("disabled");
+            }else{
+                $('#form_send').css("background-color", "#777777");
+                $('#form_send').attr({"disabled": "disabled"});
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myModal").modal('show');
+        });
+    </script>
+
+
+    </body>
+    </html>
+    {#<hr>#}
+    {#<table>#}
+    {#{% for object in pager.currentPageResults %}#}
+    {#<tr>#}
+    {#<td>{{ object.Title }}</td>#}
+    {#<td>{{ object.Text }}</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+
+    {#{% if pager.haveToPaginate %}#}
+    {#{{ pagerfanta(pager) }}#}
+    {#{% endif %}#}
+    {#<hr>#}
+{% endblock %}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content=""/>
+        <meta property="og:description" content="" />
+        <meta property="og:title" content=""/>
+        <meta name="author" content="">
+        {% block title %}<title>Armenia Tree Project</title>{% endblock %}
+        {% block stylesheets %}
+        <!-- Bootstrap Core CSS -->
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <!-- Twentytwenty CSS -->
+        <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+        <!-- Twentytwenty CSS -->
+        <link href="{{ asset('css/owl.theme.default.css') }}" rel="stylesheet">
+        <!-- Twentytwenty CSS -->
+        <link href="{{ asset('css/twentytwenty.css') }}" rel="stylesheet">
+        <!-- Slick CSS -->
+        <link href="{{ asset('css/slick.css') }}" rel="stylesheet">
+        <!-- Fancybox CSS -->
+        <link href="{{ asset('css/jquery.fancybox.css') }}" rel="stylesheet">
+        <!-- Lightbox slider -->
+        <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
+        <!-- Calendar -->
+        <link rel="stylesheet" href="{{ asset('css/pignose.calendar.css') }}">
+        <!-- Calendar -->
+        <link rel="stylesheet" href="{{ asset('css/fullcalendar.css') }}">
+        <!--&lt;!&ndash;Favicon&ndash;&gt;-->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('img/faveicon.png') }}" />
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+        {% block nav %}
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ path('index',{ 'lang': app.request.locale }) }}">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse" id="menu-center">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="dropdown">
+                                <a id="our_work" class="page-scroll" href="#" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Our Work</a>
+                                <ul class="dropdown-menu" aria-labelledby="our_work">
+                                    <li>
+                                        <a href="{{ path('tree',{'lang': app.request.locale }) }}">Tree Propagation</a>
+                                    </li>
+                                    <li class="sub-dropdown">
+                                        <a href="{{ path('forestation',{'lang': app.request.locale }) }}">Forestry</a>
+                                        <ul class="sub-dropdown-group hidden-xs">
+                                            <li><a href="{{ path('mirak',{'lang': app.request.locale }) }}">Mirak Family Nursery</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub-dropdown">
+                                        <a href="{{ path('community',{'lang': app.request.locale }) }}">Community Planting</a>
+                                        <ul class="sub-dropdown-group">
+                                            <li><a href="{{ path('village',{'lang': app.request.locale }) }}">Village & City Greening</a></li>
+                                            <li><a href="{{ path('stewardship',{'lang': app.request.locale }) }}">Environmental Stewardship</a></li>
+                                            <li><a href="{{ path('fruit',{'lang': app.request.locale }) }}">Fruit Harvesting</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub-dropdown">
+                                        <a href="{{ path('economic',{'lang': app.request.locale }) }}">Economic Empowerment</a>
+                                        <ul class="sub-dropdown-group">
+                                            <li><a href="{{ path('backyard',{'lang': app.request.locale }) }}">Backyard Nurseries</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sub-dropdown">
+                                        <a href="{{ path('education',{'lang': app.request.locale }) }}">Education & Awareness</a>
+                                        <ul class="sub-dropdown-group">
+                                            <li><a href="{{ path('bridges',{'lang': app.request.locale }) }}">The Building Bridges Initiative</a></li>
+                                            <li><a href="{{ path('empowering',{'lang': app.request.locale }) }}">Empowering Communities in Armenia</a></li>
+                                            <li><a href="{{ path('ohanian',{'lang': app.request.locale }) }}">Ohanian Educational Centers</a></li>
+                                            <li><a href="{{ path('enveducation',{'lang': app.request.locale }) }}">Sample Lessons</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="page-scroll" data-target=".navbar-collapse" href="{{ path('where',{'lang': app.request.locale }) }}">Where We Are</a>
+                            </li>
+                            <li class="dropdown">
+                                <a id="getInvolved" class="page-scroll" href="#" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Get Involved</a>
+                                <ul class="dropdown-menu" aria-labelledby="getInvolved">
+                                    <li class="sub-dropdown">
+                                        <a href="{{ path('donation',{'lang': app.request.locale }) }}">Donate</a>
+                                        {#<ul class="sub-dropdown-group">#}
+                                            {#<li><a href="">Oak Society</a></li>#}
+                                        {#</ul>#}
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('volunteer',{'lang': app.request.locale }) }}">Volunteer</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('ambassador',{'lang': app.request.locale }) }}">Be an Ambassador!</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('tour',{'lang': app.request.locale }) }}">Tour and Plant</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('events',{'lang': app.request.locale }) }}">Join Us!</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a id="our_impact" class="page-scroll"  href="{{ path('impact',{'lang': app.request.locale }) }}"  role="button"
+                                   aria-haspopup="true" aria-expanded="false">Our Impact</a>
+                                <ul class="dropdown-menu" aria-labelledby="our_impact">
+                                    <li>
+                                        <a href="{{ path('team', {'lang': app.request.locale }) }}">Our Team</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('mission',{'lang': app.request.locale }) }}">Mission & History</a>
+                                    </li>
+                                    {#<li>#}
+                                        {#<a href="#">Partners and Supporters</a>#}
+                                    {#</li>#}
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a id="kids_family" class="page-scroll"  href="{{ path('kids',{'lang': app.request.locale }) }}"  role="button"
+                                   aria-haspopup="true" aria-expanded="false">Kids & Family</a>
+                                <ul class="dropdown-menu" aria-labelledby="kids_family">
+                                    <li>
+                                        <a href="{{ path('interactive',{'lang': app.request.locale }) }}">Building Bridges Interactive</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('clubs',{'lang': app.request.locale }) }}">Eco-Clubs in Armenia</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('camps',{'lang': app.request.locale }) }}">Summer Eco Camps</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('tchalo',{'lang': app.request.locale }) }}">Fire Safety & Prevention</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('photo', {'lang': app.request.locale }) }}">Photo Viewer</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="page-scroll" data-target=".navbar-collapse" href="{{ path('app.get_news_collection', {'lang': app.request.locale }) }}">News</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="search-button-wrapper hidden">
+                                <form>
+                                    <input class="search-input" type="text" placeholder="Search.." name="search">
+                                    <button class="search-button"></button>
+                                </form>
+                            </li>
+                            <li class="button-wrapper">
+                                <a href="{{ path('donation', {'lang': app.request.locale }) }}" class="donation-link">
+                                 <button class="donate-btn">Donate</button>
+                                </a>
+                            </li>
+                            
+                            <ul class="admin-language-switcher hidden" aria-labelledby="language_selector">
+                                {#<li>#}
+                                    {#{% if app.request.locale == 'en' %}#}
+                                        {#<a href="{{ path('language',{'lang': 'en'}) }}" style="color: #6FD054;">EN</a>#}
+                                    {#{% else %}#}
+                                        {#<a href="{{ path('language',{'lang': 'en'}) }}">EN</a>#}
+                                    {#{% endif %}#}
+                                {#</li>#}
+                                {#<li>#}
+                                    {#{% if app.request.locale == 'hy' %}#}
+                                        {#<a href="{{ path('language',{'lang': 'hy'}) }}" style="color: #6FD054;">ՀԱՅ</a>#}
+                                    {#{% else %}#}
+                                        {#<a href="{{ path('language',{'lang': 'hy'}) }}">ՀԱՅ</a>#}
+                                    {#{% endif %}#}
+                                {#</li>#}
+                            </ul>
+
+                            {#<li class="dropdown language-selector-dropdown">#}
+                                {#<a id="language_selector" class="page-scroll" href="" data-toggle="dropdown" role="button"#}
+                                   {#aria-haspopup="true" aria-expanded="false">EN</a>#}
+                                {#<img class="carret-icon" src="./img/arrow-right.svg" alt="">#}
+                                {#<ul class="dropdown-menu" aria-labelledby="language_selector">#}
+                                    {#<li>#}
+                                        {#<a href="{{ path('language',{'lang': 'arm'}) }}">ՀԱՅ</a>#}
+                                    {#</li>#}
+                                    {#<li>#}
+                                        {#<a href="{{ path('language',{'lang': 'eng'}) }}">EN</a>#}
+                                    {#</li>#}
+                                {#</ul>#}
+                            {#</li>#}
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+        {#{% block javascripts %}{% endblock %}#}
+    </body>
+</html>

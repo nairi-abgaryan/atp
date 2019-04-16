@@ -1,0 +1,220 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Education and awarness</title>{% endblock %}
+
+    {% block body %}
+
+        <section class="education-and-awareness secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover;">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6">
+                            <h1>{{ top.Title|raw }}</h1>
+                    </div>
+                    <div class="col-sm-6 cover-text">
+                        {% autoescape %}
+                                <p>{{ top.TextTop|raw }}</p>
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="education-main-content-wrapper">
+            <section class="community-second">
+                <div class="visible-xs visible-sm">
+                    <div class="mobile-subdropdown-wrapper ">
+                        <a href="{{ path('bridges') }}">The Building Bridges Initiative</a>
+                        <a href="{{ path('empowering') }}">Empowering Communities in Armenia</a>
+                        <a href="{{ path('ohanian') }}">Ohanian Educational Centers</a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row center-aligned-row">
+                        <div class="col-sm-6 col-xs-12">
+                            {% autoescape %}
+                                    <p>{{ top.TextBottom|raw }}</p>
+                            {% endautoescape %}
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="../img/edaw.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="community-third">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="content-title text-center">RAISING THE GLOBAL ARMENIAN CITIZEN</h4>
+                        </div>
+                    </div>
+                    {% for item in content %}
+                    <div class="row focus-items">
+                        {% if item.Position == 'left' %}
+                        <div class="col-md-6">
+                            <img src="../uploads/images/{{ item.Image }}" alt="">
+                        </div>
+                        <div class="col-md-6 info-text-wrapper">
+                            {% autoescape %}
+                                    <h4>{{ item.Title|raw }}</h4>
+                            {% endautoescape %}
+                            {% autoescape %}
+                                    <p>{{ item.Text|raw }}</p>
+                            {% endautoescape %}
+                            <a href="{{ item.Link|raw }}">
+                                <button>{% autoescape %}
+                                            {{ item.LinkText|raw }}
+                                    {% endautoescape %}
+                                </button>
+                            </a>
+                        </div>
+                        {% elseif item.Position == 'right' %}
+                        <div class="col-md-6 left-aligned">
+                        {% autoescape %}
+                                <h4>{{ item.Title|raw }}</h4>
+                        {% endautoescape %}
+                        {% autoescape %}
+                                <p>{{ item.Text|raw }}</p>
+                        {% endautoescape %}
+                            <a href="{{ item.Link|raw }}">
+                                <button>{% autoescape %}
+                                            {{ item.LinkText|raw }}
+                                    {% endautoescape %}</button>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../uploads/images/{{ item.Image }}" alt="">
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <div class="row focus-items">
+                        {% for item in contentBottom %}
+                            <div class="col-md-6">
+                                {% autoescape %}
+                                        <h4>{{ item.Title|raw }}</h4>
+                                {% endautoescape %}
+                                {% autoescape %}
+                                        <p>{{ item.Text|raw }}</p>
+                                {% endautoescape %}
+                                <a href="{{ item.Link|raw }}">
+                                    <button>{% autoescape %}
+                                                {{ item.LinkText|raw }}
+                                        {% endautoescape %}</button>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <section class="community-last-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>FEATURED CONTENT</h4>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for item in bottom %}
+                        {% if item.Position == 'first' %}
+                        <div class="col-md-6">
+                            <div class="first-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                {% elseif item.Position == 'second' %}
+                                <div class="col-md-3">
+                                    <div class="second-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                        {% elseif item.Position == 'third' %}
+                                        <div class="col-md-3">
+                                            <div class="third-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                                {% endif %}
+                                                {% autoescape %}
+                                                        <h3>{{ item.Text|raw }}</h3>
+                                                {% endautoescape %}
+                                                {% if item.LinkType == 'outter' %}
+                                                    <button href="{{ item.Link }}"> Donate</button>
+                                                {% elseif item.LinkType == 'inner' %}
+                                                    <p>{{ item.createdAt.format('d M, Y') }}</p>
+                                                    <a href="{{ item.Link }}">Read More</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

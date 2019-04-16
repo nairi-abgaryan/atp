@@ -1,0 +1,65 @@
+{# templates/bundles/EasyAdminBundle/default/layout.html.twig #}
+{% extends '@!EasyAdmin/default/layout.html.twig' %}
+
+{% block header_logo %}
+    <a class="logo {{ easyadmin_config('site_name')|length > 14 ? 'logo-long' }}" title="{{ easyadmin_config('site_name')|striptags }}" href="{{ path('easyadmin') }}">
+        {{ easyadmin_config('site_name')|raw }}
+    </a>
+
+    {% if app.session.get('lang') == null %}
+        {{ app.session.set('lang', 'en') }}
+
+    {% endif %}
+
+        <ul class="admin-language-switcher" aria-labelledby="language_selector">
+            <li>
+                {% if app.request.query.has("lang") %}
+                    {% set query = app.request.query.remove("lang") %}
+                {% endif %}
+
+                {% set currentPath = path(app.request.attributes.get('_route'), app.request.query.all) %}
+
+                {% if app.request.locale == 'en' %}
+                    <a href="{{ currentPath }}&lang=en" style="color: #6FD054;">EN</a>
+                {% else %}
+                    <a href="{{ currentPath }}&lang=en">EN</a>
+                {% endif %}
+            </li>
+            <li>
+                {% if app.request.locale == 'hy' %}
+                    <a href="{{currentPath}}&lang=hy" style="color: #6FD054;">ՀԱՅ</a>
+                {% else %}
+                    <a href="{{currentPath}}&lang=hy">ՀԱՅ</a>
+                {% endif %}
+            </li>
+        </ul>
+
+    <style>
+        #header-logo {
+            display: flex;
+            align-items: center;
+        }
+        .admin-language-switcher {
+            display: flex;
+            margin: 0;
+        }
+        .admin-language-switcher  li {
+            list-style-type: none;
+        }
+
+        .admin-language-switcher li a{
+            color: #ffffff;
+            border-right: 1px #fff solid;
+            padding: 0 15px;
+        }
+
+        .admin-language-switcher li:nth-child(2) a{
+            color: #ffffff;
+            border: none;
+            padding: 0 15px;
+        }
+
+
+    </style>
+
+{% endblock header_logo %}

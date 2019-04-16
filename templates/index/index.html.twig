@@ -1,0 +1,325 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!--Top Section-->
+    <section id="top" class="top-section">
+        <div class="owl-carousel owl-theme">
+                <div class="item" style="background:url('../uploads/images/new_photo.jpg') no-repeat; background-size:cover; background-position: 0; height: 460px">
+                    <div class="container">
+                        <h1>{% trans %} SUSTAIN {% endtrans %}</h1>
+                        <p>{% trans %} Ensuring a high survival of trees while enriching the soil, water, air quality, and harvest {% endtrans %} }}</p>
+                    </div>
+                </div>
+                <div class="item" style="background:url('../uploads/images/DSC_1059.JPG') no-repeat; background-size:cover; background-position: 0; height: 460px">
+                    <div class="container">
+                        <h1>{% trans %} TEACH {% endtrans %}</h1>
+                        <p>{% trans %} Providing economic independence through employment and enterprise opportunities {% endtrans %}</p>
+                    </div>
+                </div>
+                <div class="item" style="background:url('../uploads/images/Vrej Malkhasyan Family.JPG') no-repeat; background-size:cover; background-position: 0; height: 460px">
+                    <div class="container">
+                        <h1>{% trans %} EMPOWER {% endtrans %}</h1>
+                        <p>{% trans %} Building awareness between healthy trees and preservation, and the role of individual and community in the environment{% endtrans %} }}</p>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <div class="work-and-news-wrapper">
+        <!--Our Work Section-->
+
+        <section id="ourwork" class="our-work">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                        {% autoescape %}
+                                <h3>{% trans %}ATP’s solution is holistic: both nature and people are integral forces that must work together to create a sustainable, healthy and non-threatening environment.{% endtrans %}</h3>
+                        {% endautoescape %}
+                        {% autoescape %}
+                                <p>{% trans %}Throughout the past 25 years, Armenia Tree Project has mastered the art of growing and planting healthy trees in Armenia and honed its ability to sustain and propagate the country’s natural resources.{% endtrans %}</p>
+                        {% endautoescape %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"> </div>
+                    <a href="/tree">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center">
+                            <div class="single item-one" style="background:url('../uploads/images/tree_propagation.jpg') no-repeat; background-size:cover; background-position: 0;"> </div>
+                            <h4>TREE PROPAGATION</h4>
+                        </div>
+                    </a>
+                    <a href="/forestation">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center">
+                            <div class="single item-one" style="background:url('../uploads/images/chelsea-bock-3073-unsplash.jpg') no-repeat; background-size:cover; background-position: 0;"> </div>
+                            <h4>FORESTATION</h4>
+                        </div>
+                    </a>
+                    <a href="/community">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center">
+                            <div class="single item-one" style="background:url('../uploads/images/billy-onjea-73784-unsplash.jpg') no-repeat; background-size:cover; background-position: 0;"> </div>
+                            <h4>COMMUNITY PLANTING</h4>
+                        </div>
+                    </a>
+                    <a href="/economic">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center">
+                            <div class="single item-one" style="background:url('../uploads/images/spencer-watson-330677-unsplash.jpg') no-repeat; background-size:cover; background-position: 0;"> </div>
+                            <h4>ECONOMIC EMPOWERMENT</h4>
+                        </div>
+                    </a>
+                    <a href="/education">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-center">
+                            <div class="single item-one" style="background:url('../uploads/images/education.jpg') no-repeat; background-size:cover; background-position: 0;"> </div>
+                            <h4>EDUCATION &amp; AWARENESS</h4>
+                        </div>
+                    </a>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                        <p>ATP’s solution is holistic: both nature and people are integral forces that must work together<br>
+                            to create a sustainable, healthy and non-threatening environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--News & Article Section-->
+
+        <section id="news" class="news-section">
+            <div class="container">
+                <h4>FEATURED CONTENT</h4>
+                <div class="grid-container">
+
+                    {% for item in bottom %}
+
+                        <div class="grid-item" style="background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover;">
+                        <div class="single-grid-content">
+                                {% autoescape %}
+                                        <h3>{{ item.Title|raw }}</h3>
+                                {% endautoescape %}
+                                {% if item.LinkType != 'video' %}
+                                   <p>{{ item.createdAt.format('d M, Y') }}</p>
+                                {% endif %}
+                                {% if item.LinkType == 'outter' %}
+                                    <a target="_blank" href="{{ item.Link }}">Read More</a>
+                                {% elseif item.LinkType == 'inner' %}
+                                    <a class="donate-link" href="{{ path('donation') }}">
+                                        <button> Donate</button>
+                                    </a>
+                                {% elseif item.LinkType == 'video' %}
+                                    <a  data-toggle="modal" data-target="#about_atp_video"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                                    <div class="modal fade" id="about_atp_video" tabindex="-1" role="dialog" aria-labelledby="about_atp_video"
+                                         aria-hidden="true">
+                                        <div class="modal-dialogg">
+                                            <div class="modal-contentt">
+                                                <div class="modal-body">
+                                                    <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;</button>
+                                                    <div class="video-container">
+                                                        <iframe width="560" height="315" src="{{ item.Link }}" frameborder="0"  allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {#<div class="grid-item">#}
+                        {#<div class="single-grid-content">#}
+                            {#<h3>Prevent Forest Fires</h3>#}
+                            {#<p>20 JUL 2018</p>#}
+                            {#<a target="_blank" href="https://www.armeniatree.org/en/ATPNews/20180816.asp">Read More</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="grid-item">#}
+                        {#<div class="single-grid-content">#}
+                            {#<h3>Donate to the ATP <br> Annual Appeal Today</h3>#}
+                            {#<button href="#"> Donate</button>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="grid-item">#}
+                        {#<div class="single-grid-content">#}
+                            {#<h3>Visit ATP in Armenia</h3>#}
+                            {#<button href="#"> Donate</button>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="grid-item">#}
+                        {#<div class="single-grid-content">#}
+                            {#<h3>ATP Pays Tribute to the <br> Inspirational Life and <br> Grassroots Work of Fr.<br> Dajad Davidian</h3>#}
+                            {#<p>18 JUL 2018</p>#}
+                            {#<a href="#">Read More</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="grid-item">#}
+                        {#<div class="single-grid-content">#}
+                            {#<h3>ATP Supports Smithsonian Folklife <br> Festival and Raises Awareness about Its <br> Mission during Several Events</h3>#}
+                            {#<a  data-toggle="modal" data-target="#about_atp_video"><img class="play-button" src="../img/play_btn.svg" alt=""></a>#}
+                        {#</div>#}
+                    {#</div>#}
+                </div>
+                {#<div class="modal fade" id="about_atp_video" tabindex="-1" role="dialog" aria-labelledby="about_atp_video"#}
+                     {#aria-hidden="true">#}
+                    {#<div class="modal-dialogg">#}
+                        {#<div class="modal-contentt">#}
+                            {#<div class="modal-body">#}
+                                {#<button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"#}
+                                        {#aria-hidden="true">&times;</button>#}
+                                {#<div class="video-container">#}
+                                    {#<iframe width="560" height="315" src="https://www.youtube.com/embed/xaU67YlZZR8" frameborder="0"  allowfullscreen></iframe>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            </div>
+        </section>
+    </div>
+
+
+
+    <!-- Events Section-->
+
+    <section id="events" class="events-screen">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 events-description">
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center review tree slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                    <div class="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact', {"lang": app.request.locale }) }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/owl.carousel.js') }}"></script>
+
+    <!-- Moment -->
+    <script src="{{ asset('js/moment.shim.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Slick custom functionality -->
+    <script src="{{ asset('js/sliderFunctionality.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+    <!-- Calendar -->
+    <script src="{{ asset('js/pignose.calendar.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> -->
+
+    <script>
+        const $calendar = $('.calendar');
+
+        const schedules = {{ events|json_encode|raw }};
+
+        $(function() {
+            $calendar.pignoseCalendar({
+                scheduleOptions: {
+                    colors: {
+                        event: '#6FD054',
+                    }
+                },
+
+                schedules: schedules,
+
+                select: function(date, context) {
+                    const $eventsDescription = $('.events-description').html('');
+
+                    if (context.storage.schedules.length > 0) {
+                        const schedule = context.storage.schedules[0];
+
+                        $eventsDescription.append(
+                            '<div class="row event-item-one">' +
+                            "<h4>" + moment(schedule.date).format("MMMM D") + "</h4>" +
+                            "<h3>" + schedule.eventTitle + "</h3>" +
+                            "<p>" + schedule.eventDescription + "</p>" +
+                            "<h6>" + schedule.eventDestination +  "</h6>" +
+                            '</div>'
+                        );
+                    } else {
+                        $eventsDescription.append(
+                            '<div class="text-center">' +
+                                "<h5>No Event </h5>" +
+                            '</div>'
+                        );
+                    }
+                },
+
+                init: function () {
+                    const firstEvent = schedules[0];
+
+                    $calendar.find(`[data-date=${firstEvent.date}]`).trigger('click');
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

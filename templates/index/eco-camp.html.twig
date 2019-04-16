@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Summer Eco Camps</title>{% endblock %}
+{% block body %}
+
+    <section class="eco-camps-top-content secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                            <h1>{{ top.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                            <p>{{ top.Text|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="eco-camps-content-wrapper">
+        <section class="community-second">
+            <div class="container">
+                {% for item in content %}
+                    {% if item.Position == 'right' %}
+                        <div class="row center-aligned-row">
+                            <div class="col-md-6 col-xs-12">
+                                {% autoescape %}
+                                        {{ item.Text|raw }}
+                                {% endautoescape %}
+                                {% if item.link is not null %}
+                                <a href="mailto:info@armeniatree.org">
+                                    <button class="camps-info-btn">
+                                            {{ item.LinkText|raw }}
+                                    </button>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <img src="../uploads/images/{{ item.Image }}" alt="">
+                            </div>
+                        </div>
+                    {% elseif item.Position == 'left' %}
+                        <div class="row center-aligned-row">
+                            <div class="col-md-6 col-xs-12">
+                                <img src="../uploads/images/{{ item.Image }}" alt="">
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                {% autoescape %}
+                                        {{ item.Text|raw }}
+                                {% endautoescape %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+
+
+    </div>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+
+
+
+    </body>
+    </html>
+    {#<hr>#}
+    {#<table>#}
+    {#{% for object in pager.currentPageResults %}#}
+    {#<tr>#}
+    {#<td>{{ object.Title }}</td>#}
+    {#<td>{{ object.Text }}</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+
+    {#{% if pager.haveToPaginate %}#}
+    {#{{ pagerfanta(pager) }}#}
+    {#{% endif %}#}
+    {#<hr>#}
+{% endblock %}

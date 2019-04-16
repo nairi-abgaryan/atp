@@ -1,0 +1,231 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Donation Review</title>{% endblock %}
+
+{% block body %}
+
+    <section class="join-us secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover; background-position: 0;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                            <h1>{{ top.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                            <p>{{ top.Text|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% if access == true %}
+
+<div class="join-us-main-content-wrapper">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="events-page-top-bar-wrapper">
+                    <div>
+                        {{ form_start(form, {'attr': {'class': 'event-search-bar-wrapper', 'id': "form"}}) }}
+                        <div>
+                            <h6>EVENTS IN</h6>
+                            {{ form_widget(form.date, {'attr': {'class': 'calendar'}}) }}
+                            <div style="color: red;">{{ form_errors(form.date) }} </div>
+                        </div>
+                        <div>
+                            <h6>SEARCH</h6>
+                            {{ form_widget(form.title) }}
+                            <div style="color: red;">{{ form_errors(form.title) }} </div>
+                        </div>
+                        <div>
+                            <h6>NEAR</h6>
+                            {{ form_widget(form.location) }}
+                            <div style="color: red;">{{ form_errors(form.location) }} </div>
+                        </div>
+                        <div>
+                            {{ form_widget(form.send, { 'attr': {'class': "find-events"}}) }}<br>
+                            <span id="clear" style="color: gray; cursor: pointer;">Clear search</span>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    <div>
+                        <h6>VIEW AS</h6>
+                        <button class="list-view active-list-view">List</button>
+                        <button class="month-view">Month</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="single-events-panels-wrapper">
+                    {% for item in pager.currentPageResults %}
+                    <div class="single-event-panel">
+                        <div>
+                            {% set startDatetimeString = item.start.local %}
+                            {% set endDatetimeString = item.end.local %}
+                            <h3><span>{{ startDatetimeString|date('l, M d, Y')|upper  }}</span>  |  {{ startDatetimeString|date('h:iA')  }} UNTIL {{ endDatetimeString|date('h:iA') }}</h3>
+                            <h4>{{ item.name.text|raw }}</h4>
+                            <p>{{ (item.description.text|length > 250 ? item.description.text|slice(0, 250) ~ '…' : item.description.text)|raw  }}</p>
+                            <div class="button-and-destination-content-wrapper">
+                                {% if item.url is defined %}
+                                    <button class="register-for-event"><a target="_blank" href="{{ item.url|raw }}">Register and Learn More</a></button>
+                                {% else %}
+                                    <div></div>
+                                {% endif %}
+                                {% if item.place is defined %}
+                                    <p class="event-destination">{{ item.place|raw }}</p>
+                                {% elseif item.venue is defined %}
+                                    <p class="event-destination">{{ item.venue.address.city|raw }} {{ item.venue.address.region|raw }}, {{ item.venue.address.country|raw }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div>
+                            {% if item.logo != null %}
+                                <img src="{{ item.logo.url }}"  alt="">
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="event-calendar-view-wrapper events-calendar-large" id='calendar'>
+
+                </div>
+                {% if pager.haveToPaginate %}
+                    <div class="pagerfanta">
+                        {{ pagerfanta(pager, 'my_view_1') }}
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+
+
+<!--Footer Section-->
+
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                <p class="hashtag">#GetRooted</p>
+                <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- jQuery -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/moment.shim.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/pignose.calendar.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/fullcalendar.js') }}"></script>
+
+<!-- FullCalendar -->
+<script src="{{ asset('js/gcal.js') }}"></script>
+
+<!-- Custom Js Files-->
+<script src="{{ asset('js/main.js') }}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=gb&key=AIzaSyC9IM-dD38CXohXe15-naktRoHKCm9Xmy0"></script>
+
+
+    <script>
+        $(function() {
+
+            $('#calendar').fullCalendar({
+                googleCalendarApiKey: 'AIzaSyAMW70pX5RAo8GYOf8PtyWzvUPvuPKkuTw',
+                events: {
+                    googleCalendarId: 'armtreeproject@gmail.com'
+                }
+            })
+
+        });
+    </script>
+
+
+<script>
+    var input = document.getElementById('form_location');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+</script>
+
+<script>
+    $(function() {
+        $('input.calendar').pignoseCalendar({
+            multiple: true,
+            select: function(date) {
+                $('#form_date').val(date[0].format('YYYY-MM-DD')+' to '+date[1].format('YYYY-MM-DD'));
+            }
+        });
+
+        $('#clear').click(function(){
+            $("#form_date").val("");
+            $("#form_title").val("");
+            $("#form_location").val("");
+
+            $("#form").submit();
+            //location.reload(true);
+        })
+    });
+</script>
+
+{% endblock %}

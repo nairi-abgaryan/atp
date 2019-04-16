@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Tour and Plant</title>{% endblock %}
+{% block body %}
+
+    <section class="tour-and-plant secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover; background-position: 0;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                            <h1>{{ top.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                            <p>{{ top.Text|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="tour-and-plant-content-wrapper">
+        <section class="community-second">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-md-6 col-xs-12">
+                        {% autoescape %}
+                                <p>{{ content.Text|raw }}</p>
+                        {% endautoescape %}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="atp-tour-video">
+                            <div class="title-and-play-button-wrapper">
+                                {% autoescape %}
+                                        <h3>{{ content.Title|raw }}</h3>
+                                {% endautoescape %}
+                                <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                             aria-hidden="true">
+                            <div class="modal-dialogg">
+                                <div class="modal-contentt">
+                                    <div class="modal-body">
+                                        <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                        <div class="video-container">
+                                            <iframe width="560" height="315" src="{{ content.Link }}" frameborder="0"  allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-third">
+            <div class="container">
+                <div class="row">
+                    <h4>OUR STAFF IS EAGER TO SHOW YOU <br />HOW WE GROW AND CARE FOR OUR TREES</h4>
+                    {% for item in bottom %}
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="ohanian-educational-centers-bottom-single-content">
+                            <img class="labeled-images" src="../uploads/images/{{ item.Image }}"  alt="">
+                            {% autoescape %}
+                                    <p>{{ item.Title|raw }}</p>
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="event-registration-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <p>All tours are offered daily and include a light lunch plus transportation to and from Yerevan.</p>
+                        <p>Duration: 3 hours</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <a target="_blank" href="https://www.facebook.com/armeniatree/?ref=br_rs"><button>Register on our Facebook Page</button></a>
+                        <p>or <a href="{{ path('events') }}">Register through events</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+
+
+
+    </body>
+    </html>
+    {#<hr>#}
+    {#<table>#}
+    {#{% for object in pager.currentPageResults %}#}
+    {#<tr>#}
+    {#<td>{{ object.Title }}</td>#}
+    {#<td>{{ object.Text }}</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+
+    {#{% if pager.haveToPaginate %}#}
+    {#{{ pagerfanta(pager) }}#}
+    {#{% endif %}#}
+    {#<hr>#}
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Donation Review</title>{% endblock %}
+
+{% block body %}
+    <!--Single News-->
+
+    <section class="donation-review-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Certificate Information</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    {{ form_start(form) }}
+                    <div class="donors-review-inputs-wrapper">
+                            <div>
+                                <label>IN HONOR OF/IN MEMORY OF *</label>
+                                {{ form_widget(form.nameType) }}
+                                <div style="color: red;">{{ form_errors(form.nameType) }} </div>
+                            </div>
+                            <div>
+                                <label>NAME ON CERTIFICATE</label>
+                                {{ form_widget(form.name, { 'attr': {'placeholder': 'Full Name'|trans}}) }}
+                            </div>
+                            <div>
+                                <label>SHIPPED TO THE ATTENTION OF</label>
+                                {{ form_widget(form.nameAttention, { 'attr': {'placeholder': 'Full Name'|trans}}) }}
+                                <div style="color: red;">{{ form_errors(form.name) }} </div>
+                            </div>
+                            <div>
+                                <label>SHIPPING ADDRESS *</label>
+                                {{ form_widget(form.address, { 'attr': {'placeholder': 'Address'|trans} }) }}
+                                <div style="color: red;">{{ form_errors(form.address) }} </div>
+                            </div>
+                            <div>
+                                <label>CITY *</label>
+                                {{ form_widget(form.city, { 'attr': {'placeholder': 'City'|trans}} ) }}
+                                <div style="color: red;">{{ form_errors(form.city) }} </div>
+                            </div>
+                            <div>
+                                {{ form_widget(form.state, { 'attr': {'id': "state" } } ) }}
+                                <div style="color: red;">{{ form_errors(form.state) }} </div>
+                                <label id="required_state">STATE/PROVINCE*</label>
+                                <select name ="state" id ="state">
+                                    {#<option value="" selected>State/Province</option>#}
+                                </select>
+                            </div>
+                            <div>
+                                <label>POSTAL CODE *</label>
+                                {{ form_widget(form.code, { 'attr':{ 'placeholder': 'Code'|trans}} ) }}
+                                <div style="color: red;">{{ form_errors(form.code) }} </div>
+                            </div>
+                            <div>
+                                {{ form_widget(form.country, { 'attr': {'id': "country" } } ) }}
+                                <div style="color: red;">{{ form_errors(form.country) }} </div>
+                                <label id="required_country">SELECT COUNTRY *</label>
+                                <select id="country" name ="country">
+
+                                </select>
+                            </div>
+                            <div>
+                                <label>RECIPIENT PHONE NUMBER *</label>
+                                {{ form_widget(form.phone, { 'attr': { 'placeholder': 'Phone Number'|trans} }) }}
+                                <div style="color: red;">{{ form_errors(form.phone) }} </div>
+                            </div>
+                            <div>
+                                <label>GIVEN/PLANTED BY *</label>
+                                {{ form_widget(form.fromName, { 'attr': {'placeholder': 'Full Name'|trans}}) }}
+                                <div style="color: red;">{{ form_errors(form.fromName) }} </div>
+                            </div>
+                    </div>
+                    <label>COMMENTS</label>
+                    {{ form_widget(form.comments, { 'attr':{ 'placeholder': 'Your comments here', 'style': 'height: 150px; width: 95%;'|trans} }) }}
+                    <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="certificate-image-wrapper">
+                        <img src="../img/Blankcert.jpg" alt="linkedin">
+                        {#<h2 class="certificate-presented" id="owner"></h2>#}
+                        {#<p class="certification-date">{{ date }}</p>#}
+                    </div>
+                    <div class="text-right">
+                        {{ form_widget(form.send, { 'attr': {'class': "donate-now", 'style': 'border: 1px solid #6FD054; background-color: #6FD054;'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        {{ form_end(form) }}
+        </div>
+    </section>
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p><span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA
+                        <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian
+                        Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    <script src="{{ asset('js/countries.js') }}"></script>
+
+    <script language="javascript">
+        populateCountries("country", "state");
+        $("#country").val("USA").change();
+    </script>
+
+    <script>
+        $('#form_send').on('click', function (e) {
+
+            if($('#form_country').val() == '-1'){
+                e.preventDefault();
+                $('#country').css({"border": "1px solid red"});
+                $('#required_country').css({"color": "red"});
+            }else{
+                $('#country').css({"border": "1px solid #707070"});
+                $('#required_country').css({"color": "#707070"});
+            }
+
+            if($('#form_state').val() === ""){
+                e.preventDefault();
+                $('#state').css({"border": "1px solid red"});
+                $('#required_state').css({"color": "red"});
+            }else{
+                $('#state').css({"border": "1px solid #707070"});
+                $('#required_state').css({"color": "#707070"});
+            }
+        });
+
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_country').val() == '-1'){
+                $('#country').css({"border": "1px solid red"});
+                $('#required_country').css({"color": "red"});
+            }else{
+                $('#country').css({"border": "1px solid #707070"});
+                $('#required_country').css({"color": "#707070"});
+            }
+
+            if($('#form_state').val() === ""){
+                $('#state').css({"border": "1px solid red"});
+                $('#required_state').css({"color": "red"});
+            }else{
+                $('#state').css({"border": "1px solid #707070"});
+                $('#required_state').css({"color": "#707070"});
+            }
+        });
+
+        // $('#form_name').on('input', function(){
+        //     var value = $('#form_name').val();
+        //     $('#owner').html(value);
+        // });
+    </script>
+
+{% endblock %}

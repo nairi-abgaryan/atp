@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Single News</title>{% endblock %}
+
+    {% block body %}
+        <section class="sponsor-karin-nursery-top-content secondary-pages-top-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-xs-12">
+                        <h1>SPONSOR KARIN NURSERY</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-second forestry-fund-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6 col-xs-12">
+                        <p>Producing the lion’s share of trees which are used to green
+                            public sites and are distributed to village families all over
+                            Armenia and Artsakh, Karin Nursery was ATP’s first tree
+                            nursery and continues to be the largest producer of trees and
+                            seedlings. The nursery has two greenhouses equipped with
+                            modern agricultural technologies and an outdoor area
+                            protected with shading and hail netting for plants in
+                            containers. Sunken cold frames are also in use for creating
+                            microclimates within the nursery. They are used to grow
+                            vegetables as well as tree seedlings. </p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <img src="../img/karin-nursery-first-photo.png" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <img style="margin-bottom: 30px" src="../img/karin-nursery-second-photo.png" alt="">
+                        <h4>Research and Education</h4>
+                        <p>Karin is an ideal place for the study of plants, and ATP hosts university students looking for practice in the field. ATP uses the latest technology in grafting, greenhouses and containerization to study and combat against climate change and atmospheric conditions.</p>
+                        <p>The Michael and Virginia Ohanian Environmental Education Center is also situated on the grounds of the nursery and hosts more than 2,000 schoolchildren and teachers each year.</p>
+                        <p>One of Armenian’s most beautiful destination, Karin Nursery is open to tourists from March through October as part of ATP’s Green Tours, and we welcome hundreds of each year from all over the world. </p>
+                        <a href="{{ path('tour',{'lang': app.session.get('lang') }) }}">
+                            <button>Learn more about Karin Nursery</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <h4>Sponsor Karin Nursery<br />
+                            <span>Sponsorship Levels:</span> $5,000 <br />
+                            <span>Sponsorships Honored with a Inscribed Plaque</span>
+                        </h4>
+                        <p>Become a lasting part of of Karin Nursery by taking advantage of the various naming opportunities while supporting the important research, education and propagation of trees that happens here. Sponsorships include but are not limited too:</p>
+                        <ul>
+                            <li>Walkway with a row of container plants</li>
+                            <li>Garden beds where seedlings are grown</li>
+                            <li>One of our beautiful flower gardens</li>
+                            <li>A cold frame located by the visitor tent</li>
+                        </ul>
+                        <p>These can be long-lasting reminders of your commitment to the environment and can be named in honor of family, friends, or your organization.</p>
+                        <img style="margin-top: 30px" class="forestry-fund-second-img" src="../img/karin-nursery-third-image.jpg" alt="">
+                        <h4>Karin Nursery Facts:</h4>
+                        <ul>
+                            <li>Established in 1996</li>
+                            <li>11 fulltime employees</li>
+                            <li>Located in the refugee village of Karin in Armenia’s Aragatsotn province</li>
+                            <li>Produces 20,000 to 25,000 high quality fruit
+                                and decorative tree seedlings each year</li>
+                            <li>Grows more than 50 different species of indigenous
+                                trees and shrubs are propagated in Karin including
+                                some found in Armenia’s Red Book of Endangered Flora</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row select-project-for-support">
+                    <div class="col-xs-12">
+                        <h4>Support ATP’s 25th Anniversary today! Contact us for more <br />
+                            information at: <span>jeanmarie@armeniatree.org</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">Glossary</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('contact') }}">Contact Us</a>
+                            </li><li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">FAQ</a>
+                            </li>
+                            <li class="hidden">
+                                <a href="#">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                            <img src="../img/facebook-logo.svg" alt="facebook">
+                        </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                            <img src="../img/twitter-logo.svg" alt="twitter">
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                            <img src="../img/instagram-logo.svg" alt="instagram">
+                        </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                            <img src="../img/youtube.svg" alt="youtube">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!-- Custom Js Files-->
+        <script src="{{ asset('js/main.js') }}"></script>
+
+    {% endblock %}

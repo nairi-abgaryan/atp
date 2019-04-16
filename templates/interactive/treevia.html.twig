@@ -1,0 +1,257 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Treevia</title>{% endblock %}
+
+    {% block body %}
+
+        <section class="bridges-interactive-secondary-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-xs-12">
+                        <ul class="secondary-navbar">
+                            <li>
+                                <a href="{{ path('ecogames') }}">EcoGames</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('bbmagazine') }}">Magazines</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('videos') }}">Videos</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('tchalo') }}">Meet Tchalo!</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('coloring') }}">Coloring</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('treevia') }}">Treevia!</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 text-right">
+                        <a href="{{ path('interactive') }}">
+                            <img src="../img/bb-interactive.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if done is defined %}
+
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="height: 80px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thank you! Your message has been sent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        <section class="treevia-page-wrapper">
+            <div class="container">
+                <h4>TREEVIA</h4>
+                <p>Watch Tigran’s videos and learn about our enviroment</p>
+                <div class="row">
+                    {% for item in content %}
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="treevia-video-one" style="background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover;">
+                                <div class="title-and-play-button-wrapper">
+                                    {% autoescape %}
+                                            <h3>{{ item.Title|raw }}</h3>
+                                    {% endautoescape %}
+                                    <a  data-toggle="modal" data-target="#m{{ item.id }}"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="m{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="m{{ item.id }}"
+                                 aria-hidden="true">
+                                <div class="modal-dialogg">
+                                    <div class="modal-contentt">
+                                        <div class="modal-body">
+                                            <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                            <div class="video-container">
+                                                <iframe width="560" height="315" src="{{ item.link }}" frameborder="0"  allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="col-sm-4 col-xs-12">
+
+                    </div>
+                </div>
+                <div class="row form-wrapper">
+                    <div class="col-sm-8 col-xs-12">
+                        <p>Have a question about the environment? Ask Tigran Today.</p>
+                        {{ form_start(form) }}
+                        <form action="">
+                            <div class="two-inputs-wrapper">
+                                <div>
+                                    <h6>FIRST NAME *</h6>
+                                    {{ form_widget(form.firstName, { 'attr': {'placeholder': 'Your Name'|trans}}) }}
+                                    <div style="color: red;">{{ form_errors(form.firstName) }} </div>
+                                </div>
+                                <div>
+                                    <h6>LAST NAME *</h6>
+                                    {{ form_widget(form.lastName, { 'attr': {'placeholder': 'Your Last Name'|trans}}) }}
+                                    <div style="color: red;">{{ form_errors(form.lastName) }} </div>
+                                </div>
+                            </div>
+                            <div class="two-inputs-wrapper">
+                                <div>
+                                    <h6>E-MAIL *</h6>
+                                    {{ form_widget(form.email, { 'attr': {'placeholder': 'Your E-mail Address'|trans}}) }}
+                                    <div style="color: red;">{{ form_errors(form.email) }} </div>
+                                </div>
+                                <div>
+                                    <h6>COUNTRY *</h6>
+                                    {{ form_widget(form.country, { 'attr': {'placeholder': 'Country'|trans}}) }}
+                                    <select id="country" name ="country">
+
+                                    </select>
+                                    <div style="color: red;">{{ form_errors(form.country) }} </div>
+                                </div>
+                            </div>
+                            <h6>WHAT IS YOUR QUESTION? *</h6>
+                            {{ form_widget(form.comments, { 'attr': {'placeholder': 'Your Message'|trans}}) }}
+                            <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                            <div class="text-center">
+                                {{ form_widget(form.send, { 'attr': {'label': "Submit!", 'style': "background-color: #777777", 'disabled': 'disabled'}}) }}
+                            </div>
+                        </form>
+                        {{ form_end(form) }}
+
+                        {#<form action="">#}
+                            {#<div class="two-inputs-wrapper">#}
+                                {#<div>#}
+                                    {#<h6>FIRST NAME *</h6>#}
+                                    {#<input type="text" placeholder="Your Name">#}
+                                {#</div>#}
+                                {#<div>#}
+                                    {#<h6>LAST NAME *</h6>#}
+                                    {#<input type="text" placeholder="Your Last Name">#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="two-inputs-wrapper">#}
+                                {#<div>#}
+                                    {#<h6>E-MAIL *</h6>#}
+                                    {#<input type="email" placeholder="Your E-mail Address">#}
+                                {#</div>#}
+                                {#<div>#}
+                                    {#<h6>COUNTRY *</h6>#}
+                                    {#<select id="country" name ="country"></select>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<h6>WHAT IS YOUR QUESTION? *</h6>#}
+                            {#<textarea name="question" ></textarea>#}
+                            {#<div class="text-right">#}
+                                {#<button>Submit</button>#}
+                            {#</div>#}
+                        {#</form>#}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/countries.js') }}"></script>
+
+    <script language="javascript">
+        populateCountries("country");
+    </script>
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_firstName').val() && $('#form_lastName').val() && $('#form_country').val() && $('#form_email').val() && $('#form_comments').val()){
+                $('#form_send').css("background-color", "#6FD054");
+                $('#form_send').removeAttr("disabled");
+            }else{
+                $('#form_send').css("background-color", "#777777");
+                $('#form_send').attr({"disabled": "disabled"});
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myModal").modal('show');
+        });
+    </script>
+
+
+{% endblock %}

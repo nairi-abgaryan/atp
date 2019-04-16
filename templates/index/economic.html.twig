@@ -1,0 +1,235 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - News</title>{% endblock %}
+{% block body %}
+
+    <section class="economic-empowerment secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover; background-position: 0;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                            <h1>{{ top.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                            <p>{{ top.TextTop|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="economic-empowerment-main-content-wrapper">
+
+        <section class="community-second">
+            <div class="visible-xs visible-sm">
+                <div class="mobile-subdropdown-wrapper ">
+                    <a href="{{ path('backyard') }}">Backyard Nurseries</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10 col-xs-12 text-center">
+                        {% autoescape %}
+                                <p>{{ top.TextBottom|raw }}</p>
+                        {% endautoescape %}
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-second economic-empowerment-articles">
+            <div class="container">
+                {% for item in content %}
+                    <div class="row center-aligned-row">
+                    {% if item.Position == 'left' %}
+                        <div class="col-md-6 col-xs-12">
+                            <img src="../uploads/images/{{ item.Image }}"  alt="">
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            {% autoescape %}
+                                    <h4>{{ item.Title|raw }}</h4>
+                            {% endautoescape %}
+                            {% autoescape %}
+                                    <p>{{ item.Text|raw }}</p>
+                            {% endautoescape %}
+                        </div>
+                    {% elseif item.Position == 'right' %}
+                        <div class="col-md-6 col-xs-12">
+                            {% autoescape %}
+                                    <h4>{{ item.Title|raw }}</h4>
+                            {% endautoescape %}
+                            {% autoescape %}
+                                    <p>{{ item.Text|raw }}</p>
+                            {% endautoescape %}
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <img src="../uploads/images/{{ item.Image }}"  alt="">
+                        </div>
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="community-last-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>FEATURED CONTENT</h4>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="row">
+                    {% for item in bottom %}
+                        {% if item.Position == 'first' %}
+                            <div class="col-md-6">
+                                <div class="first-content-video" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                    <div class="support-families">
+                                        <div class="title-and-play-button-wrapper">
+                                            {% autoescape %}
+                                                    <h3>{{ item.Text|raw }}</h3>
+                                            {% endautoescape %}
+                                            <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                                         aria-hidden="true">
+                                        <div class="modal-dialogg">
+                                            <div class="modal-contentt">
+                                                <div class="modal-body">
+                                                    <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;</button>
+                                                    <div class="video-container">
+                                                        <iframe width="560" height="315" src="{{ item.Link }}" frameborder="0"  allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif item.Position == 'second' %}
+                            <div class="col-md-3">
+                                <div class="second-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                    {% autoescape %}
+                                            <h3>{{ item.Text|raw }}</h3>
+                                    {% endautoescape %}
+                                    <p>{{ item.createdAt.format('d M, Y') }}</p>
+                                    <a href="{{ item.Link }}">Read More</a>
+                                </div>
+                            </div>
+                        {% elseif item.Position == 'third' %}
+                            <div class="col-md-3">
+                                <div class="third-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                    {% autoescape %}
+                                            <h3>{{ item.Text|raw }}</h3>
+                                    {% endautoescape %}
+                                    <a href="{{ item.Link }}">
+                                        <button> Donate</button>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+
+
+
+    </body>
+    </html>
+    {#<hr>#}
+    {#<table>#}
+        {#{% for object in pager.currentPageResults %}#}
+            {#<tr>#}
+                {#<td>{{ object.Title }}</td>#}
+                {#<td>{{ object.Text }}</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+    {#</table>#}
+
+    {#{% if pager.haveToPaginate %}#}
+        {#{{ pagerfanta(pager) }}#}
+    {#{% endif %}#}
+    {#<hr>#}
+{% endblock %}

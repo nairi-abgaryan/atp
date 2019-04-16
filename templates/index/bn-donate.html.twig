@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Tour and Plant</title>{% endblock %}
+{% block body %}
+
+
+
+    <section class="community-second backyard-nurseries-donate-top-content">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-md-6 col-xs-12">
+                    <h1>Backyard Nurseries <br />
+                        $2,000 Sponsorship for 2 Years</h1>
+                    <p>The Backyard Nursery Program (BYN) enables village residents to capitalize on their land assets by becoming tree-growers for ATP. With the guidance, training and oversight of ATP staff, each backyard nursery has the capacity to grow between 1,500 and 2,000 trees. ATP uses these trees throughout their Forestry and CTP programs. Family farmers are compensated for a healthy harvest; a family increases their income by 30% on average for each harvest that is successful. </p>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <img src="../img/planting-progrma-work.png"  alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="backyard-nurseries-donation-amount-select">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h4>I want to make my donation in:</h4>
+                    <div class="donate-options-buttons-wrapper">
+                        <button class="one-payment-btn">One Payment</button>
+                        <button class="two-payment-btn">Two Payments</button>
+                    </div>
+                    <div class="payment-amount one-time-payment" id="checkGreen">
+                        <h1>$2000</h1>
+                        <p>Sponsors a Backyard Nursery for a 2-year planting period.</p>
+                    </div>
+                    <div class="payment-amount two-time-payment" id="checkGreen2">
+                        <h1>$1000</h1>
+                        <p>Paid each year for a 2-year planting period.</p>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5 col-xs-12">
+                    <p>By sponsoring a Backyard Nursery, you’ll be participating in the growing of trees while creating a sustainable income source for village families. Each BYN sponsor is paired with a family in Armenia who is growing and caring for seedlings in their backyard. Sponsors will receive an annual update from the family throughout the year.</p>
+                    <div class="text-right">
+                        <a href="{{ path('simpleDonation', {'amount': 2000}) }}" id="target">
+                            <button class="bn-donate-button" id="changeGreen">Donate Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="sponsored-backyard-nurseries">
+        <div class="container">
+            <div class="row">
+                <h4>SPONSORED BACKYARD NURSERIES</h4>
+                <div class="sponsored-nurseries-content-wrapper">
+                    <div class="text-center">
+                        <img src="../img/lusya-poghosyan.png" srcset="../img/lusya-poghosyan@2x.png 2x" alt="">
+                        <h4>Lusya Poghosyan, <br/> Aghavnavank</h4>
+                        <p>Sponsored by</p>
+                        <h5>SALEM ARMENIAN CHURCH</h5>
+                    </div>
+                    <div class="text-center">
+                        <img src="../img/tamara-vardanyan.png" srcset="../img/tamara-vardanyan@2x.png 2x" alt="">
+                        <h4>Tamara Vardanyan <br/>
+                            and Yeprem Aghasaryan, <br/>
+                            Aghavnavank</h4>
+                        <p>Sponsored by</p>
+                        <h5>THE TOULAKIAN FAMILY</h5>
+                    </div>
+                    <div class="text-center">
+                        <img src="../img/donara-martirosyan.png" srcset="../img/donara-martirosyan@2x.png 2x" alt="">
+                        <h4>Donara Martirosyan,<br/> Aghavnavank</h4>
+                        <p>Sponsor Donara Today</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="../img/zarineh-meliksetyan.png" srcset="../img/zarineh-meliksetyan@2x.png 2x" alt="">
+                        <h4>Zarineh Meliksetyan, <br /> Agavnavank</h4>
+                        <p>Sponsored by</p>
+                        <h5>E. RICHARD THOMAS</h5>
+                    </div>
+                    <div class="text-center">
+                        <img src="../img/liana-sardaryants.png" srcset="../img/liana-sardaryants@2x.png 2x" alt="">
+                        <h4>Lianna Sardaryants, <br /> Aghavnavank</h4>
+                        <p>Sponsored by</p>
+                        <h5>GREG MISAKYAN</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row select-project-for-support">
+                <div class="col-xs-12">
+                    <h4>Support ATP’s 25th Anniversary today! Contact us for more <br />
+                        information at: <span>jeanmarie@armeniatree.org</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+    <script>
+
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_firstName').val() && $('#form_lastName').val() && $('#form_country').val() && $('#form_state').val() && $('#form_code').val() && $('#form_city').val() && $('#form_email').val() && $('#form_address').val() && $('#form_phone').val()){
+                $('#form_send').css("background-color", "#6FD054");
+            }else{
+                $('#form_send').css("background-color", "#777777");
+            }
+        });
+
+        $( ".one-payment-btn" ).click(function() {
+            var route = "{{ path('simpleDonation', {'amount': '2000'})|escape('js') }}";
+            $("#target").attr("href", route);
+        });
+        $( ".two-payment-btn" ).click(function() {
+            var route = "{{ path('simpleDonation', {'amount': '1000'})|escape('js') }}";
+            $("#target").attr("href", route);
+        });
+    </script>
+
+    </body>
+    </html>
+    {#<hr>#}
+    {#<table>#}
+    {#{% for object in pager.currentPageResults %}#}
+    {#<tr>#}
+    {#<td>{{ object.Title }}</td>#}
+    {#<td>{{ object.Text }}</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+
+    {#{% if pager.haveToPaginate %}#}
+    {#{{ pagerfanta(pager) }}#}
+    {#{% endif %}#}
+    {#<hr>#}
+{% endblock %}

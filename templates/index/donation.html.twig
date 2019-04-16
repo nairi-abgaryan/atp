@@ -1,0 +1,316 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Donation</title>{% endblock %}
+
+{% block body %}
+
+<!--Donation Section-->
+
+<section class="donation-main-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 col-xs-12">
+                <h1>You Can Change the Future!</h1>
+                <p>Help sustain Armenia’s environment and its communities.</p>
+                <p>Here are some examples of how your gift will help.</p>
+            </div>
+            {#<div class="col-sm-5 col-xs-12 text-right">#}
+                {#<button id='singleDonation' class="donation-type single-donation">Single Donation</button>#}
+                {#<button id='monthlyDonation' class="donation-type monthly-donation">Monthly Donation</button>#}
+            {#</div>#}
+        </div>
+
+        <div class="row">
+            {% for item in amount %}
+            <div class="col-sm-3 col-xs-12" >
+                <div class="single-donation-amount" >
+
+                        <div class="donation-panel-image-wrapper donate-50" style="background:url('../uploads/images/{{ item.Image }}') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                border-top-right-radius: 4px;">
+
+                        </div>
+                        <div class="amount-selection-button-wrapper">
+                            <button class="amount-selector" value="{{ item.amount }}"></button>
+                            <h1>${{ item.amount }}</h1>
+                            <p>{{ item.Text|raw }}</p>
+                        </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-12 other-amount-selector-wrapper">
+                <p>Specify other amount</p>
+                <input type="number" placeholder="Other Amount" id="other_amount">
+                {% if errorAmount is defined %}
+                    <p style="font-size: 14px; margin-top: 10px; color: red;">Please provide donation amount.</p>
+                {% endif %}
+                <p style="font-size: 14px; margin-top: 10px; color: #6FD054;">Minimum donation for a certificate is $25.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Donor's Information</h2>
+                <p>Your support is vital to keeping Armenia Green with sustainable <br /> resources. Gifts are tax-deductible to the extent allowed by law.</p>
+                <p class="choosen-amount-info">DONATION AMOUNT: <span id="amountChange"><script>
+                            if(localStorage.getItem("amount") !== null){
+                                document.write('$');
+                                document.write(localStorage.getItem("amount"));
+                            }
+                        </script></span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+               <div class="donors-info-inputs-wrapper">
+                       <div>
+                           <label>FIRST NAME *</label>
+                           {{ form_widget(form.firstName, { 'attr': {'placeholder': 'First Name'|trans}}) }}
+                           <div style="color: red;">{{ form_errors(form.firstName) }} </div>
+                       </div>
+                       <div>
+                           <label>LAST NAME *</label>
+                           {{ form_widget(form.lastName, { 'attr':{ 'placeholder': 'Last Name'|trans}} ) }}
+                           <div style="color: red;">{{ form_errors(form.lastName) }} </div>
+                       </div>
+                       <div>
+                           <label>EMAIL *</label>
+                           {{ form_widget(form.email, { 'attr': {'placeholder': 'E-Mail'|trans} }) }}
+                           <div style="color: red;">{{ form_errors(form.email) }} </div>
+                       </div>
+                       <div>
+                           <label>ADDRESS *</label>
+                           {{ form_widget(form.address, { 'attr': {'placeholder': 'Address'|trans} }) }}
+                           <div style="color: red;">{{ form_errors(form.address) }} </div>
+                       </div>
+                       <div>
+                           <label>CITY *</label>
+                           {{ form_widget(form.city, { 'attr': {'placeholder': 'City'|trans}} ) }}
+                           <div style="color: red;">{{ form_errors(form.city) }} </div>
+                       </div>
+                       <div>
+                           <label id="required_state">STATE/PROVINCE*</label>
+                           <select name="state" id ="state">
+                               {#<option value="" selected>State/Province</option>#}
+                           </select>
+                           {{ form_widget(form.state, { 'attr': {'id': "state" } } ) }}
+                           <div style="color: red;">{{ form_errors(form.state) }} </div>
+                       </div>
+                       <div>
+                           <label>POSTAL CODE *</label>
+                           {{ form_widget(form.code, { 'attr': { 'placeholder': 'Postal Code'|trans} }) }}
+                           <div style="color: red;">{{ form_errors(form.code) }} </div>
+                           {{ form_widget(form.type, { 'attr': { 'value': 'OneTime' } }) }}
+                       </div>
+                       <div>
+                           <label id="required_country">SELECT COUNTRY *</label>
+                           <select id="country" name ="country"></select>
+                           {{ form_widget(form.country, { 'attr': {'id': "country" } } ) }}
+                           <div style="color: red;">{{ form_errors(form.country) }} </div>
+                       </div>
+                       <div>
+                           <label>PHONE NUMBER *</label>
+                           {{ form_widget(form.phone, { 'attr': {'placeholder': 'Phone Number'|trans}} ) }}
+                           <div style="color: red;">{{ form_errors(form.phone) }} </div>
+                       </div>
+               </div>
+            </div>
+            {{ form_widget(form.amount) }}
+            <div class="col-sm-6 donors-additional-info-inputs-wrapper">
+
+                <p>Would you like an In Honor/Memory of Certificate for this gift?</p>
+                <div style="color: red;">{{ form_widget(form.certificate, { 'attr': {'disabled': 'disabled'}}) }}</div>
+                <p style="font-size: 14px; color: #6FD054;">Minimum donation for a certificate is $25.</p>
+                <p>Will your employer match your contribution?</p>
+                {{ form_widget(form.employer, { 'attr':{ 'placeholder': 'Employer Name'|trans} }) }}
+                <div style="color: red;">{{ form_errors(form.employer) }} </div>
+                <p>Special Instructions</p>
+                {{ form_widget(form.comments, { 'attr':{ 'placeholder': 'Your comments here', 'style': 'height: 150px;'|trans} }) }}
+                <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                <div class="text-right" style="margin-bottom: 20px">
+                    {{ form_widget(form.send, { 'attr': {'class': "donate-now", 'style': "background-color: #6FD054; border: 1px solid #6FD054;"}} ) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="community-last-section">
+        <div class="container">
+            <div class="row">
+                {% for item in bottom %}
+                {% if item.Position == 'first' %}
+                <div class="col-md-4">
+                    <div class="donation-first-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                        {% elseif item.Position == 'second' %}
+                        <div class="col-md-4">
+                            <div class="donation-second-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                {% elseif item.Position == 'third' %}
+                                <div class="col-md-4">
+                                    <div class="donation-third-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                        {% endif %}
+                                        {% autoescape %}
+                                                <a href="{{ item.Link }}">
+                                                    {{ item.Text|raw }}
+                                                </a>
+                                        {% endautoescape %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+    </section>
+
+<!--Footer Section-->
+
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <p><span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA
+                    <br> 617-926-TREE (8733)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian
+                    Assembly of America. All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                <p class="hashtag">#GetRooted</p>
+                <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- jQuery -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<!-- Custom Js Files-->
+<script src="{{ asset('js/main.js') }}"></script>
+
+<!-- Custom Js Files-->
+<script src="{{ asset('js/countries.js') }}"></script>
+
+<script language="javascript">
+  populateCountries("country", "state");
+  $("#country").val("USA").change();
+  //$("#state").val("Alabama").change();
+</script>
+
+<script>
+
+    $(document).ready(function(){
+        if (localStorage.getItem("amount") !== null) {
+            $('#form_amount').val(localStorage.getItem("amount"));
+            $('#other_amount').val(localStorage.getItem("amount"));
+        }
+    });
+
+    $('#form_send').on('click', function (e) {
+
+        if($('#form_country').val() == '-1'){
+            e.preventDefault();
+            $('#country').css({"border": "1px solid red"});
+            $('#required_country').css({"color": "red"});
+        }else{
+            $('#country').css({"border": "1px solid #707070"});
+            $('#required_country').css({"color": "#707070"});
+        }
+
+        if($('#form_state').val() === ""){
+            e.preventDefault();
+            $('#state').css({"border": "1px solid red"});
+            $('#required_state').css({"color": "red"});
+        }else{
+            $('#state').css({"border": "1px solid #707070"});
+            $('#required_state').css({"color": "#707070"});
+        }
+    });
+    $('form').on('keyup change paste', 'input, select, textarea', function(){
+        if($('#form_country').val() == '-1'){
+            $('#country').css({"border": "1px solid red"});
+            $('#required_country').css({"color": "red"});
+        }else{
+            $('#country').css({"border": "1px solid #707070"});
+            $('#required_country').css({"color": "#707070"});
+        }
+
+        if($('#form_state').val() === ""){
+            $('#state').css({"border": "1px solid red"});
+            $('#required_state').css({"color": "red"});
+        }else{
+            $('#state').css({"border": "1px solid #707070"});
+            $('#required_state').css({"color": "#707070"});
+        }
+
+        if($('#form_amount').val() > 24){
+            $('#form_certificate').removeAttr("disabled");
+        }else{
+            $("#form_certificate").val('0');
+            $('#form_certificate').attr({"disabled": "disabled"});
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    function getButtonByValue(value) {
+        var els = document.getElementsByTagName('button');
+
+        for (var i = 0, length = els.length; i < length; i++) {
+            var el = els[i];
+
+            if (el.value.toLowerCase() == value.toLowerCase()) {
+                return el;
+                break;
+            }
+        }
+    }
+    button = getButtonByValue(localStorage.getItem("amount"));
+    button.parentNode.classList.add('selected-amount');
+</script>
+
+{% endblock %}

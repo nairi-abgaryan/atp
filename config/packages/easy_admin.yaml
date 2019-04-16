@@ -1,0 +1,54 @@
+easy_admin:
+    site_name: 'ATP Admin Panel'
+    list:
+        max_results: 5
+    entities:
+        News:
+            class: App\Entity\News
+            label: 'News'
+            list:
+                title: "News"
+                fields:
+                    - { property: 'id' }
+                    - { property: 'title'  }
+                    - { property: 'text'  }
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            show:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'title'  }
+                    - { property: 'text'  }
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+
+            form:
+                fields:
+                    - { property: 'title' , type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }
+                    - { property: 'text' , type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }
+                    - { property: 'caption' }
+                    - { property: 'imageFile', type: 'vich_image' }
+            search:
+                fields:
+                    - property: 'entityLang.title'
+                    - property: 'entityLang.text'
+
+        Donation:
+            class: App\Entity\Donation
+            label: 'Donation Amount'
+            list:
+                title: "Donations"
+                fields:
+                    - { property: 'id' }
+                    - { property: 'amount' }
+                    - { property: 'text'  }
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            show:
+                fields:
+                    - { property: 'id' }
+                    - { property: 'amount' }
+                    - { property: 'text'  }
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            form:
+                fields:
+                    - { property: 'amount' }
+                    - { property: 'text' , type: 'FOS\CKEditorBundle\Form\Type\CKEditorType'  }
+                    - { property: 'imageFile', type: 'vich_image' }

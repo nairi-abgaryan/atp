@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Donations</title>{% endblock %}
+
+{% block nav %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: silver;">
+        <div class="container">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse" id="menu-center">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="{{ path('index',{'lang': app.session.get('lang') }) }}">Home Page</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin',{'lang': app.session.get('lang') }) }}">Admin Panel</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+<div class="container-fluid">
+    <div class="row search-row" style="padding: 100px 0 40px 0">
+
+        {{ form_start(form) }}
+        <div class="col-sm-12">
+            <div class="inputs-wrapper">
+                <div>
+                    <label>Transaction Status</label><br />
+                    {{ form_widget(form.status) }}<br />
+                </div>
+                <div>
+                    <label>Certificate</label><br />
+                    {{ form_widget(form.certificate) }}<br />
+                </div>
+                <div>
+                    <label>Name</label><br />
+                    {{ form_widget(form.name, { 'attr': {'placeholder': 'Name'|trans} }) }}<br />
+                </div>
+                <div>
+                    <label>Email</label><br />
+                    {{ form_widget(form.email, { 'attr': {'placeholder': 'Email'|trans} }) }}<br />
+                </div>
+                <div>
+                    <label>Transaction Id</label><br />
+                    {{ form_widget(form.transactionId, { 'attr': {'placeholder': 'Transaction Id'|trans} }) }}<br />
+                </div>
+
+                {{ form_widget(form.send, { 'attr': {'class': "filter-btn"}}) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">TransactionId</th>
+                        <th scope="col">TransactionCode</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Employer</th>
+                        <th scope="col">Certificate</th>
+                        {#<th scope="col">CardNumber</th>#}
+                        <th scope="col">CreatedAt</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in pager.currentPageResults %}
+                        <tr>
+                            <th scope="row">{{ item.transactionId }}</th>
+                            <th>{{ item.transactionStatus }}</th>
+                            <td>{{ item.type }}</td>
+                            <td>{{ item.amount }} $</td>
+                            <td>{{ item.firstName }} {{ item.lastName }}</td>
+                            <td>{{ item.code }}, {{ item.address }}, {{ item.state }}, {{ item.city }}, {{ item.country }}</td>
+                            <td>{{ item.email }}</td>
+                            <td>{{ item.phone }}</td>
+                            <td>{{ item.employer }}</td>
+                            <td>{{ item.certificate }}</td>
+                            {#<td>{{ item.accountNumber }}</td>#}
+                            <td>{{ item.createdAt|date("F jS \\a\\t g:ia") }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if pager.haveToPaginate %}
+                <div class="pagerfanta">
+                    {{ pagerfanta(pager, 'my_view_1') }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <style>
+        .search-row input, select {
+            height: 38px;
+            width: 180px;
+            border: 1px solid #777777;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+        .search-row .filter-btn {
+            margin-top: 13px;
+            height: 38px;
+            border: 1px solid #6FD054;
+            border-radius: 4px;
+            width: 190px;
+            background: #6FD054;
+            color: #ffffff;
+        }
+        .search-row .donate-now {
+            margin-top: 23px;
+            background: #212121;
+        }
+        .inputs-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+{% endblock %}
+

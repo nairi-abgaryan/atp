@@ -1,0 +1,305 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Ohanian Educational Centers</title>{% endblock %}
+{% block body %}
+    <section class="volunteer-top-content secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover; background-position: 0;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                            <h1>{{ top.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                            <p>{{ top.Text|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% if done is defined %}
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content" style="height: 80px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you! Your message has been sent.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    <div class="volunteer-page-content-wrapper">
+        <section class="community-second">
+            <div class="container">
+                {% for item in content %}
+                    {% if item.type == 'simple' %}
+                        <div class="row center-aligned-row">
+                            <div class="col-md-6 col-xs-12 left-aligned">
+                                {% autoescape %}
+                                        <h4>{{ item.Title|raw }}</h4>
+                                {% endautoescape %}
+                                {% autoescape %}
+                                        <p>{{ item.Text|raw }}</p>
+                                {% endautoescape %}
+                            </div>
+                            <div class="col-md-6 col-xs-12 text-center">
+                                <img class="atp-wants-you-image" src="../uploads/images/{{ item.Image }}" alt="">
+                                {% if item.Image is not null %}
+                                    {% if item.link is not null %}
+                                        <button class="volunteer-today-btn" data-toggle="modal" data-target="#become_volunteer">
+                                                        {{ item.LinkText|raw }}
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="become_volunteer" tabindex="-1" role="dialog" aria-labelledby="become_volunteer">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button style="color: #000000; opacity: 1; background: transparent; font-size: 24px;" type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="become-volunteer-form">
+                                                        <h4 class="text-center">THANK YOU FOR YOUR INTEREST IN VOLUNTEERING WITH ATP!</h4>
+                                                        <p class="text-left">I AM INTERESTED IN: (check all that apply)</p>
+
+                                                        {{ form_start(form) }}
+                                                        <form action="">
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-xs-12 text-left">
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            {{ form_widget(form.check1) }} Represent ATP in your community through events and festivals
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            {{ form_widget(form.check2) }} Volunteer in our Woburn office for an hour or an afternoon
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12 text-left">
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            {{ form_widget(form.check3) }} Organize an event for ATP at your church or in your community
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            {{ form_widget(form.check4) }} Lend a hand at one of our many events throughout the US
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12 text-left">
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            {{ form_widget(form.check5) }} Bring ATP’s Building Bridges curriculum to your school or youth group
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <h6>FIRST NAME *</h6>
+                                                                    {{ form_widget(form.firstName, { 'attr': {'placeholder': 'First Name'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.firstName) }} </div>
+                                                                    <h6>CITY *</h6>
+                                                                    {{ form_widget(form.city, { 'attr': {'placeholder': 'Your City'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.city) }} </div>
+                                                                    <h6>ADDRESS *</h6>
+                                                                    {{ form_widget(form.address, { 'attr': {'placeholder': 'Your Address'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.address) }} </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <h6>LAST NAME *</h6>
+                                                                    {{ form_widget(form.lastName, { 'attr': {'placeholder': 'Your Last Name'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.lastName) }} </div>
+                                                                    <h6>E-MAIL *</h6>
+                                                                    {{ form_widget(form.email, { 'attr': {'placeholder': 'Your E-mail Address'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.email) }} </div>
+                                                                    <h6>PHONE *</h6>
+                                                                    {{ form_widget(form.phone, { 'attr': {'placeholder': 'Phone Number'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.phone) }} </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-xs-12">
+                                                                    <h6>COMMENTS</h6>
+                                                                    {{ form_widget(form.comments, { 'attr': {'placeholder': 'Your Message'|trans}}) }}
+                                                                    <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                {{ form_widget(form.send, { 'attr': {'label': "Become Volunteer", 'style': "background-color: #777777", 'disabled': 'disabled'}}) }}
+                                                            </div>
+                                                        </form>
+                                                        {{ form_end(form) }}
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% elseif item.type == 'video' %}
+                        <div class="row center-aligned-row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="building-bridges-video" style="background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover;">
+                                    <div class="title-and-play-button-wrapper">
+                                        <h3>World CleanUp Day.</h3>
+                                        <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                                     aria-hidden="true">
+                                    <div class="modal-dialogg">
+                                        <div class="modal-contentt">
+                                            <div class="modal-body">
+                                                <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">&times;</button>
+                                                <div class="video-container">
+                                                    <iframe width="560" height="315" src="{{ item.VideoLink }}" frameborder="0"  allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 info-text-wrapper">
+                                {% autoescape %}
+                                        <h4>{{ item.Title|raw }}</h4>
+                                {% endautoescape %}
+                                {% autoescape %}
+                                        <p>{{ item.Text|raw }}</p>
+                                {% endautoescape %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="text-center">
+                    <a href="{{ path('ambassador') }}">
+                        <button class="ambassador-btn">Be an Ambassador</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_firstName').val() && $('#form_lastName').val() && $('#form_city').val() && $('#form_email').val() && $('#form_address').val() && $('#form_phone').val()){
+                $('#form_send').css("background-color", "#6FD054");
+                $('#form_send').removeAttr("disabled");
+            }else{
+                $('#form_send').css("background-color", "#777777");
+                $('#form_send').attr({"disabled": "disabled"});
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myModal").modal('show');
+        });
+    </script>
+
+
+
+    </body>
+    </html>
+    {#<hr>#}
+    {#<table>#}
+    {#{% for object in pager.currentPageResults %}#}
+    {#<tr>#}
+    {#<td>{{ object.Title }}</td>#}
+    {#<td>{{ object.Text }}</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+
+    {#{% if pager.haveToPaginate %}#}
+    {#{{ pagerfanta(pager) }}#}
+    {#{% endif %}#}
+    {#<hr>#}
+{% endblock %}

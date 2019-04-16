@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>{{ news.Title }}</title>{% endblock %}
+
+{% block body %}
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=2050363658524161&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!--Twitter Share SDK-->
+    <script>
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+
+    <!--Linkedin Share SDK-->
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+
+
+    <!--Single News-->
+
+    <section class="single-news-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 col-xs-12">
+                    <div class="share-buttons-wrapper">
+                        <!-- Facebook Like button-->
+                        <div class="fb-like"
+                             data-layout="button"
+                             data-action="like"
+                             data-size="small"
+                             data-show-faces="false"
+                             data-share="true">
+                        </div>
+                        <!-- Twitter Share Button-->
+                        <a href="https://twitter.com/share" class="twitter-share-button"  data-count="vertical">Tweet</a>
+                        <!-- Google Share Button-->
+                        <div class="g-plus" data-action="share"></div>
+                        <!-- Linkedin Share Button-->
+                        <script type="IN/Share"></script>
+                    </div>
+                    <p class="news-date">{{ news.createdAt.format('d M, Y') }}</p>
+                    <h5>
+                            {{ news.Title|raw }}
+                    </h5>
+                    <img src="../uploads/images/{{ news.Image }}" class="img-rounded"/>
+                    <p class="image-caption">
+                          {{ news.caption|raw }}
+                    </p>
+                        <p>{{ news.Text|raw }}</p>
+                    {% if news.pdf is not null %}
+                        <a href="../uploads/images/{{ news.pdf }}" target="_blank" style="font-size: 20px;">{{ news.pdfName }}</a>
+                    {% endif %}
+                    <br>
+                    <br>
+
+                    {% if news.video is not null %}
+                        <div class="text-center">
+                            <video width="480" height="320" controls="controls">
+                                <source src="../uploads/images/{{ news.video }}" type="video/mp4">
+                            </video>
+                        </div>
+                    {% endif %}
+
+                    <br>
+                    <br>
+                    <br>
+                    <div class="news-images-gallery">
+                        {% for item in news.images %}
+                            <a class="fancybox" data-fancybox="news-gallery-1" href="../uploads/images/{{ item.Image }}">
+                                <img src="../uploads/images/{{ item.Image }}" alt=""/>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ path('news') }}">back to news</a>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p><span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA
+                        <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian
+                        Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Fancybox -->
+    <script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

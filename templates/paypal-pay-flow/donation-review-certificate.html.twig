@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Donation Review</title>{% endblock %}
+
+{% block body %}
+    <!--Single News-->
+
+    <section class="donation-review-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Transaction completed successfully</h1>
+                    <p>Thank you for you donation</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="donation-details">
+                        <div>
+                            <p>Donation</p>
+                            <p>Designation</p>
+                            <p>Number of Payments</p>
+                            <p>Certificate</p>
+                            <p>Donor Name</p>
+                            <p>Donor E-mail</p>
+                            <p>Comments</p>
+                            <p>Billing Name</p>
+                            <p>Address</p>
+                        </div>
+                        <div class="donated-user-details">
+                            <p>$ {{ donation.amount }}</p>
+                            <p>Backyard Nurseries</p>
+                            <p>{{ donation.type }}</p>
+                            <p>{{ donation.certificate }}</p>
+                            <p>{{ donation.firstName }} {{ donation.lastName }}</p>
+                            <p>{{ donation.email }}</p>
+                            <p>{{ donation.comments }}</p>
+                            <p>{{ donation.firstName }} {{ donation.lastName }}</p>
+                            <p>{{ donation.address }}, {{ donation.city }}, {{ donation.state }}, {{ donation.code }}, {{ donation.country }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p><span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA
+                        <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian
+                        Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a href="#">
+                        <img src="./img/facebook-logo.svg" alt="linkedin">
+                    </a>
+                    <a href="#">
+                        <img src="./img/twitter-logo.svg" alt="facebook">
+                    </a>
+                    <a href="#">
+                        <img src="./img/instagram-logo.svg" alt="twitter">
+                    </a>
+                    <a href="#">
+                        <img src="./img/youtube.svg" alt="twitter">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

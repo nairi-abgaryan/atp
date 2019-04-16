@@ -1,0 +1,282 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Single News</title>{% endblock %}
+
+    {% block body %}
+        <section class="tree-propagation secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover;">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6">
+                        {% autoescape %}
+                                <h1>{{ top.Title|raw }}</h1>
+                        {% endautoescape %}
+                    </div>
+                    <div class="col-sm-6 cover-text">
+                        {% autoescape %}
+                                <p>{{ top.Text|raw }}</p>
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="tree-propagation-content-wrapper">
+            <section class="community-second">
+                <div class="container">
+                    <div class="row center-aligned-row">
+                        <div class="col-md-6">
+                            {% autoescape %}
+                                    <p>{{ content.Text|raw }}</p>
+                            {% endautoescape %}
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../uploads/images/{{ content.Image }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Planting Model Section-->
+
+
+            <section class="planting-model-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>OUR COMMUNITY TREE PLANTING NURSERIES</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for item in sections %}
+                            <div class="col-lg-4 col-sx-12 tree-propagation-planting-single-model text-center">
+                                <img src="../uploads/images/{{ item.Image }}" alt="phase-one">
+                                {% autoescape %}
+                                    <h5>
+                                        {{ item.Title|raw }}
+                                    </h5>
+                                {% endautoescape %}
+                                <div class="nursery-info-single-row">
+                                    <p class="property">
+                                        Established
+                                    </p>
+                                    <p class="value">
+                                        {% autoescape %}
+                                                {{ item.Established|raw }}
+                                        {% endautoescape %}
+                                    </p>
+                                </div>
+                                <div class="nursery-info-single-row">
+                                    <p class="property">
+                                        Location
+                                    </p>
+                                    <p class="value">
+                                        {% autoescape %}
+                                                {{ item.Location|raw }}
+                                        {% endautoescape %}
+                                    </p>
+                                </div>
+                                <div class="nursery-info-single-row">
+                                    <p class="property">
+                                        Area
+                                    </p>
+                                    <p class="value">
+                                        {% autoescape %}
+                                                {{ item.Area|raw }}
+                                        {% endautoescape %}
+                                    </p>
+                                </div>
+                                <div class="nursery-info-single-row">
+                                    <p class="property">
+                                        Employees
+                                    </p>
+                                    <p class="value">
+                                        {% autoescape %}
+                                                {{ item.Employees|raw }}
+                                        {% endautoescape %}
+                                    </p>
+                                </div>
+                                <div class="nursery-info-single-row">
+                                    <p class="property">
+                                        Trees and shrubs produced
+                                    </p>
+                                    <p class="value">
+                                        {% autoescape %}
+                                                {{ item.Trees|raw }}
+                                        {% endautoescape %}
+                                    </p>
+                                </div>
+                                <div class="nursery-info-single-row">
+                                    <p class="property">
+                                        Current seedlings
+                                    </p>
+                                    <p class="value">
+                                        {% autoescape %}
+                                                {{ item.Seedlings|raw }}
+                                        {% endautoescape %}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ path('mirak') }}">
+                            <button>Find out more about our Mirak Nursery</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="propagation-type-content-wrapper">
+                <div class="container">
+                    <div class="propagation-type-single-content-wrapper">
+                        <div class="single-type">
+                            <img src="../img/blueberry.svg" alt="">
+                            <div>
+                                <p>BLUEBERRIES</p>
+                            </div>
+                        </div>
+                        <div class="single-type">
+                            <img src="../img/pear.svg" alt="">
+                            <div>
+                                <p>MALACHA PEAR</p>
+                            </div>
+                        </div>
+                        <div class="single-type">
+                            <img src="../img/pear.svg" alt="">
+                            <div>
+                                <p>DZMERNUK PEAR</p>
+                            </div>
+                        </div>
+                        <div class="single-type">
+                            <img src="../img/apricot.svg" alt="">
+                            <div>
+                                <p>YEREVANI APRICOT</p>
+                            </div>
+                        </div>
+                        <div class="single-type">
+                            <img src="../img/apricot.svg" alt="">
+                            <div>
+                                <p>SATENI APRICOT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="community-third">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% autoescape %}
+                            <h4>
+                                    {{ bottom.Title|raw }}
+                            </h4>
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                    <div class="row focus-items">
+                        <div class="col-md-6 text-center">
+                            <img src="../uploads/images/{{ bottom.Image }}" alt="">
+                            <a data-toggle="modal" data-target="#how_use_grafting">
+                                <button class="grafting-tech-btn">
+                                    {% autoescape %}
+                                            {{ bottom.LinkText|raw }}
+                                    {% endautoescape %}
+                                </button>
+                            </a>
+                            <div class="modal fade" id="how_use_grafting" tabindex="-1" role="dialog" aria-labelledby="how_use_grafting"
+                                 aria-hidden="true">
+                                <div class="modal-dialogg">
+                                    <div class="modal-contentt">
+                                        <div class="modal-body">
+                                            <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                            <div class="video-container">
+                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/bm_XXJTtlDg" frameborder="0"  allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 methodology-info-text-wrapper">
+                            {% autoescape %}
+                                    {{ bottom.Text|raw }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Forest Summit: Global Action and Armenia</title>{% endblock %}
+
+    {% block body %}
+        <section class="forestry-summit secondary-pages-top-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6">
+                        <h1>FOREST SUMMIT</h1>
+                    </div>
+                    <div class="col-sm-6 cover-text">
+                        <p>Acopian Center For The Environment<br />
+                            American University Of Armenia Yerevan,<br />
+                            Armenia  <span>October 20–23, 2019</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-second forestry-fund-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6 col-xs-12">
+                        <p>Join us at the inaugural <b>Forest Summit: Global Action and
+                            Armenia</b>, hosted by Armenia Tree Project (ATP) and the
+                            Acopian Center for the Environment at American University of
+                            Armenia (AUA), October 20–23, 2019, in Yerevan, Armenia.
+                            <br /><br />
+                            <b>The Forest Summit: Global Action and Armenia</b> seeks to facilitate open and transparent discussion of policy decisions on Armenia’s forests with the aim of catalyzing improvements in forest conservation and restoration internationally. In addition to a wide variety of
+                            speaker sessions, attendees will participate in field visits to
+                            forestry sites in Armenia, take part in social/networking
+                            events on the sidelines of the Conference, and visit some of
+                            Armenia’s most prominent tourist sites. </p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <img src="../img/forest-summit-first-image.png" alt="">
+                    </div>
+                </div>
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6 col-xs-12">
+                        <img class="forestry-fund-second-img" src="../img/forest-summit-second-image.png" alt="">
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <h4>Sponsorship Levels</h4>
+                        <ul>
+                            <li>Platinum Sponsor: <span>$25,000</span></li>
+                            <li>Gold Sponsor: <span>$15,000</span></li>
+                            <li>Silver Sponsor: <span>$10,000</span></li>
+                            <li>Bronze Sponsor: <span>$5,000</span></li>
+                        </ul>
+                        <button>Download Sponsorship Brochure</button>
+                        <a href="http://forestsummit.am/" target="_blank">
+                            <button style="margin-left: 15px">Register and for more information</button>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>SUMMIT CO-SPONSORS</h3>
+                        <div class="co-sponsors-logo-wrapper">
+                            <img class="acopian-center-logo" src="../img/AUA_ACE_RGB_HL-1.png" alt="">
+                            <img class="atp-logo" src="../img/logo_black.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row select-project-for-support">
+                    <div class="col-xs-12">
+                        <h4>Support ATP’s 25th Anniversary today! Contact us for more <br />
+                            information at: <span>jeanmarie@armeniatree.org</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">Glossary</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('contact') }}">Contact Us</a>
+                            </li><li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">FAQ</a>
+                            </li>
+                            <li class="hidden">
+                                <a href="#">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                            <img src="../img/facebook-logo.svg" alt="facebook">
+                        </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                            <img src="../img/twitter-logo.svg" alt="twitter">
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                            <img src="../img/instagram-logo.svg" alt="instagram">
+                        </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                            <img src="../img/youtube.svg" alt="youtube">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!-- Custom Js Files-->
+        <script src="{{ asset('js/main.js') }}"></script>
+
+    {% endblock %}

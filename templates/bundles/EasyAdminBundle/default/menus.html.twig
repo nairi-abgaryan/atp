@@ -1,0 +1,205 @@
+{% macro render_menu_item(item, translation_domain) %}
+    {% if item.type == 'divider' %}
+        {{ item.label|trans(domain = translation_domain) }}
+    {% else %}
+        {% set menu_params = { menuIndex: item.menu_index, submenuIndex: item.submenu_index } %}
+        {% set path =
+            item.type == 'link' ? item.url :
+            item.type == 'route' ? path(item.route, item.params) :
+            item.type == 'entity' ? path('easyadmin', { entity: item.entity, action: 'list' }|merge(menu_params)|merge(item.params)) :
+            item.type == 'empty' ? '#' : ''
+        %}
+
+        {# if the URL generated for the route belongs to the backend, regenerate
+           the URL to include the menu_params to display the selected menu item
+           (this is checked comparing the beginning of the route URL with the backend homepage URL)
+        #}
+        {% if item.type == 'route' and (path starts with path('easyadmin')) %}
+            {% set path = path(item.route, menu_params|merge(item.params)) %}
+        {% endif %}
+
+        <a href="{{ path }}"
+           class="{{ item.css_class|default('') }}"
+           {% if item.target|default(false) %}target="{{ item.target }}"{% endif %}
+                {% if item.rel|default(false) %}rel="{{ item.rel }}"{% endif %}>
+            {% if item.icon is not empty %}<i class="fa {{ item.icon }}"></i>{% endif %}
+            <span>{{ item.label|trans(domain = translation_domain) }}</span>
+            {% if item.children|default([]) is not empty %}<i class="fa fa-angle-right treeview-icon"></i>{% endif %}
+        </a>
+    {% endif %}
+{% endmacro %}
+
+{% import _self as helper %}
+
+{% block main_menu_before %}{% endblock %}
+
+{% set _translation_domain = (_entity_config.translation_domain)|default(easyadmin_config('translation_domain'))|default('messages') %}
+<ul class="sidebar-menu" data-widget="tree" data-animation-speed="250">
+    {% set _menu_items = easyadmin_config('design.menu') %}
+
+    {% set step = 0 %}
+    {% block main_menu %}
+        {% for item in _menu_items %}
+            {% set step = step + 1 %}
+            {% if step == 1 %}
+                {% set parent = 'landing' %}
+                <li class="dropdown">
+                    <a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseLanding" aria-expanded="false" aria-controls="collapseLanding">Landing</a>
+                    <ul class="collapse" id="collapseLanding" aria-labelledby="{{ parent }}">
+            {% elseif step == 2 %}
+                {% set parent = 'our_work' %}
+                </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseOurWork" aria-expanded="false" aria-controls="collapseOurWork">Our work</a>
+                    <ul class="collapse" id="collapseOurWork" aria-labelledby="{{ parent }}">
+            {% elseif step == 16 %}
+                {% set parent = 'where' %}
+                </ul>
+                </li>
+                <li class="dropdown">
+                <a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseWhereWeAre" aria-expanded="false" aria-controls="collapseWhereWeAre">Where we are</a>
+            <ul class="collapse" id="collapseWhereWeAre" aria-labelledby="{{ parent }}">
+            {% elseif step == 17 %}
+                {% set parent = 'getInvolved' %}
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseGetInvolved" aria-expanded="false" aria-controls="collapseGetInvolved">Get Involved</a>
+                    <ul class="collapse" id="collapseGetInvolved" aria-labelledby="{{ parent }}">
+                        <a href="{{ path('donationslist') }}" style="padding-left: 0px;">Donations List</a>
+            {% elseif step == 22 %}
+                {% set parent = 'our_impact' %}
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseOurImpact" aria-expanded="false" aria-controls="collapseOurImpact">Our Impact</a>
+                    <ul class="collapse" id="collapseOurImpact" aria-labelledby="{{ parent }}">
+            {% elseif step == 25 %}
+                {% set parent = 'kids_family' %}
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseKids" aria-expanded="false" aria-controls="collapseKids">Kids & Family & interactive pages</a>
+                    <ul class="collapse" id="collapseKids" aria-labelledby="{{ parent }}">
+            {% elseif step == 34 %}
+                {% set parent = 'news' %}
+                    </ul>
+                </li>
+                {#<li class="dropdown">#}
+                    {#<a id="{{ parent }}" class="page-scroll" role="button" data-toggle="collapse" href="#collapseNews" aria-expanded="false" aria-controls="collapseNews">News</a>#}
+                    {#<ul class="collapse" id="collapseNews" aria-labelledby="{{ parent }}">#}
+            {% endif %}
+
+            {% block menu_item %}
+                {% set is_selected_menu = app.request.query.get('menuIndex')|default(-1) == loop.index0 %}
+                {% set is_selected_submenu = is_selected_menu and app.request.query.get('submenuIndex')|default(-1) != -1 %}
+
+        {% if parent != 'news' %}
+            <li class="{{ item.type == 'divider' ? 'header' }} {{ item.children is not empty ? 'treeview' }} {{ is_selected_menu ? 'active' }} {{ is_selected_submenu ? 'submenu-active' }}">
+        {% endif %}
+
+                    {% if parent != 'news' %}
+                        {{ helper.render_menu_item(item, _translation_domain) }}
+                    {% endif %}
+
+                    {% if item.children|default([]) is not empty %}
+                        {% if parent != 'news' %}
+                            <ul class="treeview-menu">
+                        {% endif %}
+                                {% for subitem in item.children %}
+                                    {% block menu_subitem %}
+                                        {% if parent == 'news' %}
+                                            {#<ul class="{{ subitem.type == 'divider' ? 'header' }} {{ is_selected_menu and app.request.query.get('submenuIndex')|default(-1) == loop.index0 ? 'active' }}">#}
+                                                {{ helper.render_menu_item(subitem, _translation_domain) }}
+                                            {#</ ul>#}
+                                        {% else %}
+                                            <li class="{{ subitem.type == 'divider' ? 'header' }} {{ is_selected_menu and app.request.query.get('submenuIndex')|default(-1) == loop.index0 ? 'active' }}">
+                                                {{ helper.render_menu_item(subitem, _translation_domain) }}
+                                            </li>
+                                        {% endif %}
+                                    {% endblock menu_subitem %}
+                                {% endfor %}
+                        {% if parent != 'news' %}
+                            </ul>
+                        {% endif %}
+                    {% endif %}
+                {% if parent != 'news' %}
+                    </li>
+                {% endif %}
+            {% endblock menu_item %}
+
+        {% endfor %}
+
+        {#</ul>#}
+        {#</li>#}
+
+        <style>
+            .treeview a {
+                color: #ffffff;
+                margin-bottom: 10px;
+                display: block;
+                padding: 0 !important;
+            }
+            .treeview .fa-chevron-circle-right {
+                display: none;
+            }
+            .treeview-menu li a i {
+                display: inline-block;
+            }
+            .treeview a .fa-angle-right {
+                display: inline-block !important;
+            }
+            .sidebar-menu a {
+                background: #333;
+                color: #CCC;
+                border-left: 3px solid transparent;
+                display: block;
+                font-weight: bold;
+                opacity: 1;
+                padding: 12px 5px 12px 15px;
+            }
+
+            .sidebar-menu a:hover {
+                color: #FFFFFF;
+                background: #4D4D4D;
+                border-left-color: #BBB;
+            }
+
+            .sidebar-menu a i{
+                display: none;
+            }
+        </style>
+
+        <script>
+            const activeTreeview = document.querySelector('.treeview.active');
+
+            let activeDropdown = null;
+
+            if (activeTreeview !== null) {
+                activeTreeview.parentElement.classList.add('in');
+                activeDropdown = activeTreeview.parentElement.parentElement;
+            }
+
+            const sidebarMenu = document.querySelector('.sidebar-menu');
+
+            sidebarMenu.onclick = function (event) {
+                const target = event.target;
+                const dropdown = target.closest('.dropdown');
+
+                if (dropdown !== null) {
+                    if (activeDropdown === null) {
+                        activeDropdown = dropdown;
+                    } else if (dropdown !== activeDropdown) {
+                        activeDropdown.firstElementChild.classList.add('collapsed');
+                        activeDropdown.lastElementChild.classList.remove('in');
+
+                        activeDropdown = dropdown;
+                    }
+                }
+            };
+        </script>
+    {% endblock main_menu %}
+</ul>
+
+{% block main_menu_after %}{% endblock %}

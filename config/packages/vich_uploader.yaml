@@ -1,0 +1,21 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        images:
+            delete_on_remove: false
+            delete_on_update: false
+            inject_on_load: true
+            uri_prefix:         '%app.path.images%'
+            upload_destination: '%app.path.images%'
+        news_images:
+            delete_on_remove: false
+            delete_on_update: false
+            inject_on_load: true
+            uri_prefix:         '%app.path.news_images%'
+            upload_destination: '%kernel.root_dir%/../web/%app.path.news_images%'
+        news_pdf:
+            delete_on_remove: false
+            delete_on_update: false
+            inject_on_load: true
+            uri_prefix:         '%app.path.news_pdf%'
+            upload_destination: '%kernel.root_dir%/../web/%app.path.news_pdf%'

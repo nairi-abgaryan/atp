@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.617 18.883">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6fd054;
+      }
+    </style>
+  </defs>
+  <g id="watermelon" transform="translate(0 -120.274)">
+    <g id="Group_308" data-name="Group 308" transform="translate(6.426 120.276)">
+      <g id="Group_307" data-name="Group 307" transform="translate(0 0)">
+        <path id="Path_402" data-name="Path 402" class="cls-1" d="M92.376,120.309h0V121.5a11.38,11.38,0,1,0,22.76-.024v-1.171H92.376Zm3.015,5.32-.837-1.912,2.9-1.272.837,1.912Zm4.013,3.754-1.747-1.142,1.735-2.654,1.747,1.142Zm5.4.946h-2.087v-3.171H104.8Zm3.308-.946-1.735-2.654,1.747-1.142,1.735,2.654Zm4.013-3.754-2.9-1.272.837-1.912,2.9,1.272Z" transform="translate(-92.376 -120.309)"/>
+      </g>
+    </g>
+    <g id="Group_310" data-name="Group 310" transform="translate(0 120.274)">
+      <g id="Group_309" data-name="Group 309" transform="translate(0 0)">
+        <path id="Path_403" data-name="Path 403" class="cls-1" d="M31.274,120.277v1.191a13.467,13.467,0,0,1-26.935,0c0-.037,0-.139,0-1.191-3.867,0-2.954,0-4.339,0-.046,12.044,8.78,18.883,17.806,18.883,8.981,0,17.814-6.758,17.81-18.88Z" transform="translate(0 -120.274)"/>
+      </g>
+    </g>
+  </g>
+</svg>

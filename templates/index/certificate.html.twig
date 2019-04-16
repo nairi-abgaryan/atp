@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Donation Review</title>{% endblock %}
+
+{% block body %}
+    <!--Single News-->
+
+    <section class="donation-review-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Review Your Donation</h1>
+                    <p>Please review your donation details and submit</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="donation-details">
+                       <div>
+                           <p>Donation</p>
+                           <p class="donated-user-details">$ {{ donation.amount }}</p>
+                       </div>
+                       <div>
+                           <p>Number of Payments</p>
+                           <p class="donated-user-details">{{ donation.type }}</p>
+                       </div>
+                       <div>
+                           <p>Donor Name</p>
+                           <p class="donated-user-details">{{ donation.firstName }} {{ donation.lastName }}</p>
+                       </div>
+                       <div>
+                           <p>Donor E-mail</p>
+                           <p class="donated-user-details">{{ donation.email }}</p>
+                       </div>
+                       <div>
+                           <p>Special Instruction</p>
+                           {% if donation.comments is not null %}
+                               <p class="donated-user-details">{{ donation.comments }}</p>
+                           {% else %}
+                               <p class="donated-user-details">N/A</p>
+                           {% endif %}
+                       </div>
+                       <div>
+                           <p>Billing Name</p>
+                           <p class="donated-user-details">{{ donation.firstName }} {{ donation.lastName }}</p>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="donation-details">
+                        <div>
+                            <p>{{ certificate.nameType }}</p>
+                            <p class="donated-user-details">{{ certificate.name }}</p>
+                        </div>
+                        <div>
+                            <p>Given/Planted By</p>
+                            <p class="donated-user-details">{{ certificate.fromName }}</p>
+                        </div>
+                        <div>
+                            <p>Shipping Address</p>
+                            <p class="donated-user-details">{{ certificate.address }}, {{ certificate.city }}, {{ certificate.state }}</p>
+                        </div>
+                        <div>
+                            <p>Comments</p>
+                            <p class="donated-user-details">{{ certificate.comments }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="donate-button-wrapper">
+                    <a href="{{ path('payment', {'id': donation.Id}) }}">
+                        <button class="submit-donation" style="margin-top: 100px;">Proceed to Payment</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p><span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA
+                        <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian
+                        Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

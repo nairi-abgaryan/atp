@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Single News</title>{% endblock %}
+
+    {% block body %}
+        <section class="forestry-fund secondary-pages-top-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-xs-12">
+                        <h1>SUPPORT ATP’S <br />FORESTRY FUND</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-second forestry-fund-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6 col-xs-12">
+                        <p>The decline of Armenia’s forest cover was caused by many factors including unsustainable logging, use of wood as fuel for cooking and heating,
+                            the blockade of the 1990s by Armenia’s neighbors, deforestation by the mining industry, and climate change. Erosion, habitat loss,
+                            and diminished supplies of clean water are consequences of a low level of forest cover. It is imperative that we focus our long-term energies on the renewal of Armenia’s forests.
+                            <br /><br />
+                            ATP’s Forestry Fund will sustain reforestation efforts, and with your help, will increase the number of trees planted annually in order to replenish the forests that have tragically been lost.</p>
+
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <img src="../img/forestry-fund-first-image.png" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <img class="forestry-fund-second-img" src="../img/forestry-fund-second-image.png" alt="">
+                        <p>It is imperative that we focus our long-term energies on the
+                            renewal of Armenia’s forests. ATP’s Forestry Fund will sustain
+                            reforestation efforts, and with your help, will increase the
+                            number of trees planted annually in order to replenish the
+                            forests that have tragically been lost.</p>
+                        <a href="{{ path('forestation',{'lang': app.session.get('lang') }) }}">
+                            <button>Learn more about ATP’s Forestry Programs</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <h4>Factors in Forest cover decline</h4>
+                        <p>
+                            Erosion, habitat loss, and diminished supplies of clean water are consequences of a low level of forest cover. Armenia has faced several factors that have contributed to the decline of important forest cover including:
+                        </p>
+                        <ul>
+                            <li>Continued unsustainable logging</li>
+                            <li>Domestic use of wood as fuel for cooking and heating</li>
+                            <li>Large scale loss during the energy blockade of 1990s by Armenia’s neighbors</li>
+                            <li>Deforestation by the mining industry</li>
+                            <li>Effects of climate change</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row select-project-for-support">
+                    <div class="col-xs-12">
+                        <h4>Support ATP’s 25th Anniversary today! Contact us for more <br />
+                            information at: <span>jeanmarie@armeniatree.org</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">Glossary</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('contact') }}">Contact Us</a>
+                            </li><li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">FAQ</a>
+                            </li>
+                            <li class="hidden">
+                                <a href="#">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                            <img src="../img/facebook-logo.svg" alt="facebook">
+                        </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                            <img src="../img/twitter-logo.svg" alt="twitter">
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                            <img src="../img/instagram-logo.svg" alt="instagram">
+                        </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                            <img src="../img/youtube.svg" alt="youtube">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!-- Custom Js Files-->
+        <script src="{{ asset('js/main.js') }}"></script>
+
+    {% endblock %}

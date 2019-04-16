@@ -1,0 +1,343 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Education Building Bridges</title>{% endblock %}
+
+    {% block body %}
+
+        <section class="education-and-awareness secondary-pages-top-content" style="background:url('../uploads/images/{{ top.Image }}') no-repeat; background-size:cover;">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-sm-6">
+                        {% autoescape %}
+                        <h1>
+                           {{ top.Title|raw }}
+                        </h1>
+                        {% endautoescape %}
+                    </div>
+                    <div class="col-sm-6 cover-text">
+                        {% autoescape %}
+                            <p>
+                                {{ top.Text|raw }}
+                            </p>
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if done is defined %}
+
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="height: 80px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thank you! Your message has been sent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        <div class="education-building-bridges-main-content-wrapper">
+            <section class="community-second">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% autoescape %}
+                                <p>
+                                    {{ topContent.Text|raw }}
+                                </p>
+                            {% endautoescape %}
+                            <a href="{{ path('interactive') }}">
+                                <button>Come play with us at Building Bridges Interactive</button>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="building-bridges-video" style="background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('../uploads/images/{{ topContent.Image }}') no-repeat; background-size: cover;">
+                                <div class="title-and-play-button-wrapper">
+                                    {% autoescape %}
+                                    <h3>
+                                        {{ topContent.Title|raw }}
+                                    </h3>
+                                    {% endautoescape %}
+                                    <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                                 aria-hidden="true">
+                                <div class="modal-dialogg">
+                                    <div class="modal-contentt">
+                                        <div class="modal-body">
+                                            <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                            <div class="video-container">
+                                                <iframe width="560" height="315" src="{{ topContent.link }}" frameborder="0"  allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="community-third">
+                <div class="container">
+                    {% for item in content %}
+                        <div class="row focus-items">
+                            {% if item.Position == 'left' %}
+                                <div class="col-md-6">
+                                    <img src="../uploads/images/{{ item.Image }}" alt="">
+                                </div>
+                                <div class="col-md-6 info-text-wrapper">
+                                    {% autoescape %}
+                                    <h4>
+                                            {{ item.Title|raw }}
+                                    </h4>
+                                    {% endautoescape %}
+                                    {% autoescape %}
+                                        <p>
+                                            {{ item.Text|raw }}
+                                        </p>
+                                    {% endautoescape %}
+                                    <a href="{{ item.Link|raw }}">
+                                        <button>
+                                            {% autoescape %}
+                                                    {{ item.LinkText|raw }}
+                                            {% endautoescape %}
+                                        </button>
+                                    </a>
+                                </div>
+                            {% elseif item.Position == 'right' %}
+                                <div class="col-md-6 left-aligned">
+                                    {% autoescape %}
+                                    <h4>
+                                            {{ item.Title|raw }}
+                                    </h4>
+                                    {% endautoescape %}
+                                    {% autoescape %}
+                                        <p>
+                                            {{ item.Text|raw }}
+                                        </p>
+                                    {% endautoescape %}
+                                    <a href="{{ item.Link|raw }}">
+                                        <button>
+                                            {% autoescape %}
+                                                    {{ item.LinkText|raw }}
+                                            {% endautoescape %}
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="../uploads/images/{{ item.Image }}" alt="">
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+
+            <section class="building-bridges-form-wrapper" id="building_bridges_form">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>THANK YOU FOR YOUR INTEREST IN BUILDING BRIDGES!</h4>
+                        </div>
+                    </div>
+                    {{ form_start(form) }}
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-4 col-xs-12">
+                                <img src="../img/building-bridges-form-photo.png" srcset="../img/building-bridges-form-photo@2x.png 2x" alt="">
+                                <h5>I AM INTERESTED IN: (check all that apply)</h5>
+                                <div class="checkbox">
+                                    <label>{{ form_widget(form.check1) }} Teacher Kit</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>{{ form_widget(form.check2) }} ATP Visit to My School</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>{{ form_widget(form.check3) }} Bringing My School to Armenia</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>{{ form_widget(form.check4) }} Volunteering with Building Bridges</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-xs-12">
+                                <div class="building-bridges-form-content-wrapper">
+                                    <div>
+                                        <label>FIRST NAME *</label>
+                                        {{ form_widget(form.firstName, { 'attr': {'placeholder': 'First Name'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.firstName) }} </div>
+                                        <label>SCHOOL *</label>
+                                        {{ form_widget(form.school, { 'attr': {'placeholder': 'School'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.school) }} </div>
+                                        <label>EMAIL *</label>
+                                        {{ form_widget(form.email, { 'attr': {'placeholder': 'Email'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.email) }} </div>
+                                        <label>ADDRESS *</label>
+                                        {{ form_widget(form.address, { 'attr': {'placeholder': 'Address'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.address) }} </div>
+                                    </div>
+                                    <div>
+                                        <label>LAST NAME *</label>
+                                        {{ form_widget(form.lastName, { 'attr': {'placeholder': 'Last Name'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.lastName) }} </div>
+                                        <label>TITLE *</label>
+                                        {{ form_widget(form.title, { 'attr': {'placeholder': 'Title'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.title) }} </div>
+                                        <label>GRADE *</label>
+                                        {{ form_widget(form.grade, { 'attr': {'placeholder': 'Grade'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.grade) }} </div>
+                                        <label>PHONE *</label>
+                                        {{ form_widget(form.phone, { 'attr': {'placeholder': 'Phone'|trans}}) }}
+                                        <div style="color: red;">{{ form_errors(form.phone) }} </div>
+                                    </div>
+                                </div>
+                                <label>COMMENTS</label>
+                                {{ form_widget(form.comments, { 'attr': {'placeholder': 'Comments'|trans, 'rows': '6'}}) }}
+                                <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                            </div>
+                            <div class="text-right">
+                                {{ form_widget(form.send, { 'attr': {'label': "Submit", 'class': "submit-form-btn", 'style': "background-color: #777777", 'disabled': 'disabled'}}) }}
+                            </div>
+                        </div>
+                    </form>
+                    {{ form_end(form) }}
+
+                </div>
+            </section>
+
+            <section class="community-last-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>FEATURED CONTENT</h4>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for item in bottom %}
+                        {% if item.Position == 'first' %}
+                        <div class="col-md-6">
+                            <div class="first-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                {% elseif item.Position == 'second' %}
+                                <div class="col-md-3">
+                                    <div class="second-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                        {% elseif item.Position == 'third' %}
+                                        <div class="col-md-3">
+                                            <div class="third-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                                {% endif %}
+                                                {% autoescape %}
+                                                        <h3>{{ item.Text|raw }}</h3>
+                                                {% endautoescape %}
+                                                {% if item.LinkType == 'outter' %}
+                                                    <button href="{{ item.Link }}"> Donate</button>
+                                                {% elseif item.LinkType == 'inner' %}
+                                                    <p>{{ item.createdAt.format('d M, Y') }}</p>
+                                                    <a href="{{ item.Link }}">Read More</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_firstName').val() && $('#form_lastName').val() && $('#form_email').val() && $('#form_address').val() && $('#form_phone').val() && $('#form_school').val() && $('#form_title').val() && $('#form_grade').val()){
+                $('#form_send').css("background-color", "#6FD054");
+                $('#form_send').removeAttr("disabled");
+            }else{
+                $('#form_send').css("background-color", "#777777");
+                $('#form_send').attr({"disabled": "disabled"});
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#myModal").modal('show');
+        });
+    </script>
+
+    {% endblock %}

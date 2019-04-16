@@ -1,0 +1,21 @@
+<svg id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #333;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <circle id="Oval_2" data-name="Oval 2" class="cls-1" cx="15" cy="15" r="15"/>
+  <g id="search-2" data-name="search" transform="translate(9 9)">
+    <path id="Shape" class="cls-2" d="M0,0,4,4" transform="translate(9 8)"/>
+    <circle id="Oval" class="cls-2" cx="5" cy="5" r="5" transform="translate(0 0)"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg id="play_btn-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="Shape" class="cls-1" d="M0,0V48L39,24Z"/>
+</svg>

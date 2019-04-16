@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Donation</title>{% endblock %}
+
+{% block body %}
+
+    <!--Donation Section-->
+
+    <section class="donation-main-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-xs-12">
+                    <img class="event-based-poster" src="../img/gardengala.png" srcset="../img/gardengala@2x.png 2x" alt="facebook">
+                    <p class="event-place">1262 Hartwood Point Drive Pasadena, California <br />
+                        5:30 p.m. cocktails 7:00 p.m. dinner</p>
+                </div>
+                <div class="col-lg-5 col-xs-12">
+                    <ul class="event-options">
+                        <li>
+                            <span>Prunus armeniacus (Apricot): $25,000</span><br />
+                            12 Tickets, Invitation to VIP Planting & Reception*, Recognition in Booklet
+                        </li>
+                        <li>
+                            <span>Tulipa armena (Armenian tulip): $10,000</span><br />
+                            10 Tickets, Invitation to VIP Planting & Reception*, Recognition in Booklet
+                        </li>
+                        <li>
+                            <span>Rubus armeniacus (Blackberry): $5,000</span><br />
+                            7 Tickets, Invitation to VIP Planting & Reception*, Recognition in Booklet
+                        </li>
+                        <li>
+                            <span>Armenias papaver (Armenian poppy): $2,500</span><br />
+                            4 Tickets, Invitation to VIP Planting & Reception*, Recognition in Booklet
+                        </li>
+                        <li>
+                            <span>Iris barnumae (Purple iris): $1,000</span><br />
+                            2 Tickets, Recognition in Booklet
+                        </li>
+                        <li>
+                            <span>Lycaste skinnerii armeniaca (Orchid): $500</span><br />
+                            1 Ticket, Recognition in Booklet
+                        </li>
+                        <li>
+                            <span>Individual tickets: $250</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="vip-planting-description">* VIP Planting & Reception will take place at the Ararat Home of Los Angeles on Sunday, May 5th.</p>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Donation Information</h2>
+                    <p>Your support is vital to keeping Armenia Green with sustainable <br /> resources. Gifts are tax-deductible to the extent allowed by law.</p>
+                </div>
+
+                {{ form_start(form) }}
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="donors-info-inputs-wrapper garden-gala-flow">
+                            <div>
+                                <label>AMOUNT *</label>
+                                {{ form_widget(form.amount, { 'attr': {'placeholder': 'Amount to Donate'|trans}}) }}
+                                <div style="color: red;">{{ form_errors(form.amount) }} </div>
+                                <label>FIRST NAME *</label>
+                                {{ form_widget(form.firstName, { 'attr': {'placeholder': 'First Name'|trans}}) }}
+                                <div style="color: red;">{{ form_errors(form.firstName) }} </div>
+                                {{ form_widget(form.country, { 'attr': {'id': "country" } } ) }}
+                                <label>SELECT COUNTRY *</label>
+                                <select id="country" name ="country">
+
+                                </select>
+                                <div style="color: red;">{{ form_errors(form.country) }} </div>
+                                <label>ADDRESS *</label>
+                                {{ form_widget(form.address, { 'attr': {'placeholder': 'Address'|trans} }) }}
+                                <div style="color: red;">{{ form_errors(form.address) }} </div>
+                                <label>CITY *</label>
+                                {{ form_widget(form.city, { 'attr': {'placeholder': 'City'|trans}} ) }}
+                                <div style="color: red;">{{ form_errors(form.city) }} </div>
+                            </div>
+                            <div>
+                                <label>EMAIL *</label>
+                                {{ form_widget(form.email, { 'attr': {'placeholder': 'E-Mail'|trans} }) }}
+                                <div style="color: red;">{{ form_errors(form.email) }} </div>
+                                <label>LAST NAME *</label>
+                                {{ form_widget(form.lastName, { 'attr':{ 'placeholder': 'Last Name'|trans}} ) }}
+                                <div style="color: red;">{{ form_errors(form.lastName) }} </div>
+                                {{ form_widget(form.state, { 'attr': {'id': "state" } } ) }}
+                                <label>STATE *</label>
+                                <select name ="state" id ="state">
+                                    <option value="" selected>State/Province</option>
+                                </select>
+                                <div style="color: red;">{{ form_errors(form.state) }} </div>
+                                <label>POSTAL CODE *</label>
+                                {{ form_widget(form.code, { 'attr': { 'placeholder': 'Postal Code'|trans} }) }}
+                                <div style="color: red;">{{ form_errors(form.code) }} </div>
+                                <label>PHONE NUMBER *</label>
+                                {{ form_widget(form.phone, { 'attr': {'placeholder': 'Phone Number'|trans}} ) }}
+                                <div style="color: red;">{{ form_errors(form.phone) }} </div>
+                                {{ form_widget(form.type, { 'attr': { 'value': 'OneTime' } }) }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_widget(form.amount) }}
+                    <div class="col-sm-6 donors-additional-info-inputs-wrapper">
+
+                        <p>Will your employer match your contribution?</p>
+                        {{ form_widget(form.employer, { 'attr':{ 'placeholder': 'Employer Name'|trans} }) }}
+                        <div style="color: red;">{{ form_errors(form.employer) }} </div>
+                        <p>Special Instructions</p>
+                        {{ form_widget(form.comments, { 'attr':{ 'placeholder': 'Your comments here', 'style': 'height: 150px;'|trans} }) }}
+                        <div style="color: red;">{{ form_errors(form.comments) }} </div>
+                        <div class="text-right">
+                            {{ form_widget(form.send, { 'attr': {'class': "donate-now", 'disabled': 'disabled'}}) }}
+                        </div>
+                        {{ form_end(form) }}
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p><span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA
+                        <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian
+                        Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/countries.js') }}"></script>
+
+    <script language="javascript">
+        populateCountries("country", "state");
+    </script>
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#form_firstName').val() && $('#form_lastName').val()  && $('#form_amount').val() && $('#form_country').val() && $('#form_state').val() && $('#form_code').val() && $('#form_city').val() && $('#form_email').val() && $('#form_address').val() && $('#form_phone').val()){
+                $('#form_send').css({"background-color": "#6FD054", "border": "1px solid #6FD054"});
+                $('#form_send').removeAttr("disabled");
+            }else{
+                $('#form_send').css("background-color", "#777777");
+                $('#form_send').attr({"disabled": "disabled"});
+            }
+        });
+    </script>
+
+{% endblock %}

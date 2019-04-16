@@ -1,0 +1,337 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Community Planting</title>{% endblock %}
+
+{% block body %}
+
+    <section class="community secondary-pages-top-content" style="background:url('../uploads/images/{{ item.Image }}') no-repeat; background-size:cover; background-position: 0;">
+        <div class="container">
+            <div class="row center-aligned-row">
+                <div class="col-sm-6">
+                    {% autoescape %}
+                            <h1>{{ item.Title|raw }}</h1>
+                    {% endautoescape %}
+                </div>
+                <div class="col-sm-6 cover-text">
+                    {% autoescape %}
+                            <p>{{ item.Text|raw }}</p>
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="community-main-content-wrapper">
+        <section class="community-second">
+            <div class="visible-xs visible-sm">
+                <div class="mobile-subdropdown-wrapper ">
+                    <a href="{{ path('village') }}">Village & City Greening</a>
+                    <a href="{{ path('stewardship') }}">Environmental Stewardship</a>
+                    <a href="{{ path('fruit') }}">Fruit Harvesting</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-md-6">
+                        {% autoescape %}
+                                <p>{{ content.Text|raw }}</p>
+                        {% endautoescape %}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="how-planting-works" style="background: linear-gradient(
+                                rgba(0, 0, 0, 0.2),
+                                rgba(0, 0, 0, 0.2)
+                                ), url('../uploads/images/{{ content.Image }}') no-repeat; background-size:cover; height: 335px; position: relative;">
+                            <div class="title-and-play-button-wrapper">
+                                {% autoescape %}
+                                        <h3>{{ content.Title|raw }}</h3>
+                                {% endautoescape %}
+                                <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                             aria-hidden="true">
+                            <div class="modal-dialogg">
+                                <div class="modal-contentt">
+                                    <div class="modal-body">
+                                        <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                        <div class="video-container">
+                                            <iframe width="560" height="315" src="{{ content.Link }}" frameborder="0"  allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Planting Model Section-->
+
+
+        <section class="planting-model-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>ATP’S COMMUNITY PLANTING MODEL</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    {%  set ind = 0 %}
+
+                    {% for item in models %}
+
+                        {%  if ind == 0 %}
+                        <div class="col-lg-4 col-sx-12 planting-single-model text-center">
+                            <img src="../uploads/images/{{ item.Image }}" alt="phase-one">
+                            {% autoescape %}
+                                {{ item.Title|raw }}
+                            {% endautoescape %}
+                            {% autoescape %}
+                                {{ item.Text|raw }}
+                            {% endautoescape %}
+                                <a href="#" data-toggle="modal" data-target="#atp_six_criteria">
+                                    Check out ATP’s Six Criteria <br />
+                                    for a Community Planting Site
+                                </a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="atp_six_criteria" tabindex="-1" role="dialog" aria-labelledby="atp_six_criteria">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button style="color: #000000; opacity: 1; background: transparent; font-size: 24px; width: auto;" type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="atp-six-criteria-wrapper">
+                                                <h4 class="text-center">ATP’S SIX CRITERIA FOR A COMMUNITY PLANTING SITE</h4>
+                                                <p class="text-center">ATP evaluates each community and location to planting to ensure trees are <br /> cared for and positioned for long-term survival.</p>
+                                                <ol>
+                                                    <li>
+                                                        <h5>HUMAN FACTOR</h5>
+                                                        <p>How willing and ready the community is to care for the trees</p>
+                                                    </li>
+                                                    <li>
+                                                        <h5>FENCING & SECURITY</h5>
+                                                        <p>Will the trees be security</p>
+                                                    </li>
+                                                    <li>
+                                                        <h5>SOIL COMPOSITION</h5>
+                                                        <p>Soil that is rich with nutrients. </p>
+                                                    </li>
+                                                    <li>
+                                                        <h5>WATER IRRIGATION</h5>
+                                                        <p>Water that is available and accessible</p>
+                                                    </li>
+                                                    <li>
+                                                        <h5>COMMUNITY LAND</h5>
+                                                        <p>Land that is accessible to the entire community</p>
+                                                    </li>
+                                                    <li>
+                                                        <h5>CLIMATE ZONE</h5>
+                                                        <p>With 11 Micro-Climates, location is an important consideration</p>
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% set ind = 1 %}
+                    {% else %}
+                        <div class="col-lg-4 col-sx-12 planting-single-model text-center">
+                            <img src="../uploads/images/{{ item.Image }}" alt="phase-one">
+                            {% autoescape %}
+                                {{ item.Title|raw }}
+                            {% endautoescape %}
+                            {% autoescape %}
+                                {{ item.Text|raw }}
+                            {% endautoescape %}
+                        <a href="{% autoescape %}{{ item.Link|raw }}{% endautoescape %}">
+                            {% autoescape %}
+                                {{ item.LinkText|raw }}
+                            {% endautoescape %}
+                        </a>
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="community-third">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>OUR CURRENT FOCUS</h4>
+                    </div>
+                </div>
+                {% for item in focus %}
+                    <div class="row focus-items center-aligned-row">
+                    {% if item.Position == 'first' %}
+                        <div class="col-md-6">
+                            <img src="../uploads/images/{{ item.Image }}" srcset="../img/PHOTO3@2x.jpg 2x" alt="">
+                        </div>
+                        <div class="col-md-6 info-text-wrapper">
+                            {% autoescape %}
+                                    <h4>{{ item.Title|raw }}</h4>
+                            {% endautoescape %}
+                            {% autoescape %}
+                                    <p>{{ item.Text|raw }}</p>
+                            {% endautoescape %}
+                            <a href="{{ item.Link }}">
+                                <button>Learn More</button>
+                            </a>
+                        </div>
+                    {% elseif item.Position == 'second' %}
+                        <div class="col-md-6 left-aligned">
+                            {% autoescape %}
+                                    <h4>{{ item.Title|raw }}</h4>
+                            {% endautoescape %}
+                            {% autoescape %}
+                                    <p>{{ item.Text|raw }}</p>
+                            {% endautoescape %}
+                            <a href="{{ item.Link }}">
+                                <button>Learn More</button>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../uploads/images/{{ item.Image }}" srcset="../img/PHOTO2@2x.jpg 2x" alt="">
+                        </div>
+                    {% elseif item.Position == 'third' %}
+                        <div class="col-md-6">
+                            <img src="../uploads/images/{{ item.Image }}" srcset="../img/PHOTO@2x.jpg 2x" alt="">
+                        </div>
+                        <div class="col-md-6 info-text-wrapper">
+                            {% autoescape %}
+                                    <h4>{{ item.Title|raw }}</h4>
+                            {% endautoescape %}
+                            {% autoescape %}
+                                    <p>{{ item.Text|raw }}</p>
+                            {% endautoescape %}
+                            <a href="{{ item.Link }}">
+                                <button>Learn More</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+
+
+
+        <section class="community-last-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>FEATURED CONTENT</h4>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="row">
+                    {% for item in bottom %}
+                    {% if item.Position == 'first' %}
+                    <div class="col-md-6">
+                        <div class="first-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                            {% elseif item.Position == 'second' %}
+                            <div class="col-md-3">
+                                <div class="second-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                    {% elseif item.Position == 'third' %}
+                                    <div class="col-md-3">
+                                        <div class="third-content" style="background: url('../uploads/images/{{ item.Image }}') no-repeat; background-size: cover; height: 400px;">
+                                            {% endif %}
+                                            {% autoescape %}
+                                                    <h3>{{ item.Text|raw }}</h3>
+                                            {% endautoescape %}
+                                            {% if item.LinkType == 'outter' %}
+                                                <a href="{{ item.Link }}">
+                                                    <button> Donate</button>
+                                                </a>
+                                            {% elseif item.LinkType == 'inner' %}
+                                                <p>{{ item.createdAt.format('d M, Y') }}</p>
+                                                <a href="{{ item.Link }}">Read More</a>
+                                            {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}

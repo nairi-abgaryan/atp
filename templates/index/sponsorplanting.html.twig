@@ -1,0 +1,462 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Single News</title>{% endblock %}
+
+    {% block body %}
+        <section class="sponsor-community-tree-planting secondary-pages-top-content">
+            <div class="container">
+                <div class="row center-aligned-row">
+                    <div class="col-xs-12">
+                        <h1>SPONSOR A COMMUNITY <br />TREE PLANTING SITE</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <section class="community-second">
+                <div class="container">
+                    <div class="row center-aligned-row">
+                        <div class="col-sm-6 col-xs-12">
+                            <p>We have chosen 18 unique Community Tree Planting sites for
+                                sponsorship in 2019. Your gift will support site selection,
+                                training, tree planting, and monitoring of the site. In addition,
+                                we couple tree planting with environmental education in the
+                                community and local schools, so site sponsors will also
+                                support these complementary initiatives. Sponsorships range
+                                from $7,500 to $50,000, depending on site size and location. </p>
+                            <a href="{{ path('community',{'lang': app.session.get('lang') }) }}">
+                                <button>Learn more about ATP’s Community Planting Program</button>
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="how-planting-works" style="background: linear-gradient(
+                                    rgba(0, 0, 0, 0.2),
+                                    rgba(0, 0, 0, 0.2)
+                                    ), url('../../img/sponsor-tree-planting-video.png') no-repeat; background-size:cover; height: 335px; position: relative;">
+                                <div class="title-and-play-button-wrapper">
+                                    <h3>So, how does your tree planting <br />program work?</h3>
+                                    <a  data-toggle="modal" data-target="#how_planting_works"><img class="play-button" src="../img/play_btn.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="how_planting_works" tabindex="-1" role="dialog" aria-labelledby="how_planting_works"
+                                 aria-hidden="true">
+                                <div class="modal-dialogg">
+                                    <div class="modal-contentt">
+                                        <div class="modal-body">
+                                            <button style="color: #ffffff; opacity: 1;" type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                            <div class="video-container">
+                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/knYkkK2LHbI" frameborder="0"  allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 30px 0">
+                        <div class=" col-xs-12">
+                            <h4 style="margin-bottom: 0">AKNASHEN VILLAGE SPONSORSHIP</h4>
+                            <p>Sponsored by the Aznoian Family in Memory of Nicholas Aznoian</p>
+                        </div>
+                    </div>
+                    <div class="row center-aligned-row" style="padding: 25px 0">
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="../img/aknashen -vilage-photo-one.png">
+                            <p style="color: #6FD054">Aznoian Family and Aknashen Village Leadership</p>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <p>Known for growing grapes since the early 19th Century, Aknashen has become a champion for producing mouthwatering plums, peaches, and apples. ATP has partnered with village leadership of Aknashen to design a program to help people thrive.  Since then ATP has planted 4,668 trees in Aknashen including 8-10 fruit and nut trees given to each of the 450 families in the village. These trees are a source of food along with income for the families, helping them to move towards independence. </p>
+                            <p>This work was sponsored by Mrs. Grace Aznoian and her family in memory of her husband Nicholas, one of ATP’s most ardent supporters. </p>
+                        </div>
+                    </div>
+                    <div class="row center-aligned-row">
+                        <div class="col-sm-6 col-xs-12">
+                            <p>“We knew about all of the good work ATP has been doing, and we knew Nick was a strong advocate for supporting the planting efforts. But we didn’t realize the scope of the project and how much of an impact is has on the lives of village families until we made this visit. The distribution of hundreds of fruit trees to the families is a major undertaking, and we know Nick would have been proud of this effort.” </p>
+                            <p>- Lynn Aznoian following her visit and plaque dedication in 2018</p>
+                            <p>In the coming year, ATP plans to plant another 150 trees in the community forest and 250 trees and shrubs around the local school. We will also expand the environmental education program in the village.</p>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="../img/aknashen-vilage-photo-two.png">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+        <section class="analytics-content-wrapper" style="margin: 40px 0 75px 0;">
+            <div class="container">
+                <div class="single-analytics-content-wrapper" style="grid-template-columns: 1fr 1fr;">
+                    <div class="single-analytics">
+                        <img src="../img/fields.svg" alt="">
+                        <div>
+                            <h5>4,668</h5>
+                            <p>TREES PLANTED</p>
+                        </div>
+                    </div>
+                    <div class="single-analytics">
+                        <img src="../img/family-group-of-three.svg" alt="">
+                        <div>
+                            <h5>450</h5>
+                            <p>FAMILIES RECEIVED 8-10 FRUIT & NUT TREES</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section class="select-project-for-support">
+                <div class="container">
+                    <h3>COMMUNITY TREE PLANTING SITES AVAILABLE FOR SPONSORSHIP</h3>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/GorisSchool.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$7,500</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Goris School No. 6</h1>
+                                    <p>Since 2017, ATP has planted 370 fruit, nut, and decorative trees on the grounds of Goris School No. 6. In the coming year, ATP plans to plant an additional 100 trees and include the school in its environmental educational plans with a class on biodiversity.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/Metsamor.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$7,500</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Metsamor School No. 2</h1>
+                                    <p>Since 2013, ATP has planted 696 trees on the grounds of Metsamor High School No. 2. In the coming year, ATP plans to plant an additional 80 forsythia shrubs, 10 apricots trees, and 5 peach at the school and introduce environmental education lessons on water.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/Arbes.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$10,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Arbes Health Center</h1>
+                                    <p>Since 1999, ATP has planted 849 fruit and decorative trees at the Arbes Health Center for Children with Special Needs, including sweet cherry and apricot. Arbes was established in 1999 in the reconstructed building of the Arabkir Children’s Hospital.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/silikian.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>Sponsored</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>NRC Silikian (Yerevan)</h1>
+                                    <p>Since 2005, ATP has provided 2,016 fruit and decorative trees to families in the Silikian district of Yerevan, which was established by the Norwegian Refugee Council. In the coming year, ATP will include the community schools in its environmental educational plans.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/Driedapricots.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$15,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>St. Harutyun Church (Geghakert)</h1>
+                                    <p>Since 2000, ATP has planted 879 fruit, nut, and decorative trees at St.
+                                        Harutyun Church in Geghakert Village. ATP plans to plant another 20
+                                        apricot, pear, and peach trees on the church grounds in 2019. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/military-training.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>Sponsored</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Aram Manukian Military Training School (Nubarashen)</h1>
+                                    <p>Since 2013, ATP has planted 1,410 fruit and decorative trees at the Aram Manukian Military Training School. In the coming year, ATP plans to add another 100 trees to the grounds and conduct environmental education lessons for the young scouts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/khndzoresk.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$20,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Nerkin Khndzoresk Village & School</h1>
+                                    <p>Since 2010, ATP has planted 225 fruit and decorative trees at Nerkin Khndzoresk School and given 2,560 fruit and nut trees to families in this southern village on the border with Azerbaijan. In the coming year, ATP plans to visit the school to introduce environmental education lessons.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/khndzoresk-school.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$20,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Khndzoresk School</h1>
+                                    <p>Since 2010, ATP has planted more than 350 apple and pear trees on the grounds of the Khdnzoresk Village School and greened a memorial park commemorating the genocide. In the coming year, ATP plans to visit the school to introduce environmental education lessons.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/st-ghazar.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$20,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>St. Ghazar Church (Metsamor)</h1>
+                                    <p>Since 2002, ATP has planted 3,318 fruit and decorative trees on the grounds of Metsamor’s St. Ghazar Church. In the coming year, ATP plans to include youth from the community in its environmental education programs in partnership with the Family and Community NGO.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/NorKyank.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$25,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Nor Kyank Village</h1>
+                                    <p>Since 2006, ATP has provided 3,041 trees to Nor Kyank Village including the establishment of a small community forest. In the coming year, ATP plans to plant an additional 200 trees and include the community school in its environmental educational plans.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/maralik.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$25,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Maralik City Parks</h1>
+                                    <p>Since 2013, ATP has planted 3,775 trees in the town of Maralik. In the coming year, ATP plans to plant an additional 400 decorative trees and shrubs, and include the community schools in its environmental educational programs.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/berdzor.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$30,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Berdzor Park & Village Families</h1>
+                                    <p>Since 2008, ATP has planted 2,565 trees in Berdzor (Lachin) including St. Ascension Church and distributed 1,280 fruit trees to families in the town. In the coming year, ATP plans to include the community schools in its environmental educational programs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/lighthouse.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$35,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Lighthouse Foundation</h1>
+                                    <p>Since 2011, ATP has planted 2,134 trees at the Armenian Lighthouse Charitable Foundation in Ptghunk Village, including 54 fruit trees. In the coming year, ATP plans to plant an additional 160 trees and to include the mothers and children in our environmental education programs.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/Sarukhan.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$40,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Sarukhan Community Forest</h1>
+                                    <p>Since 2016, ATP has planted 5,634 trees to establish a new community forest in Sarukhan Village, including 190 fruit trees. In the coming year, ATP will plant another 1,000 trees and continue to work at the community school with its environmental education lessons.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/Halidzor.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$40,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Halidzor Tram & Village Families</h1>
+                                    <p>Since 2013, ATP has planted 3,297 fruit, nut, and decorative trees at Halidzor Station, which is the aerial tramway that leads to Tatev Monastery and distributed fruit trees to 115 families. In the coming year, ATP will present environmental education lessons at the village school.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/movses-village.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$50,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Movses Village (Shamshadin)</h1>
+                                    <p>Since 2014, ATP has planted 1,897 trees in Movses, a village on the tense border with Azerbaijan, including the distribution of fruit trees to every family. In the coming year, ATP plans to plant an additional 100 trees and introduce environmental education in the school.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/tsakhadzor.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$50,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Our Lady of Armenia Summer Camp (Tsakhkadzor)</h1>
+                                    <p>Since 2002, ATP has planted 4,382 fruit and decorative trees at the Our Lady of Armenia Summer Camp in Tsakhkadzor. This summer, ATP’s environmental education team will visit the camp to present lessons on the importance of forests.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="single-project">
+                                <div class="single-tree-planting-project-img-wrapper" style="background:url('../../img/kindergarten78.png') no-repeat; background-size:cover;  border-top-left-radius: 4px;
+                                        border-top-right-radius: 4px;">
+                                    <div class="project-label">
+                                        <h5>$50,000</h5>
+                                    </div>
+                                </div>
+                                <div class="tree-planting-single-project-title-and-amount">
+                                    <h1>Kindergarten No. 78 (Malatia Sebastia)</h1>
+                                    <p>Since 1996, ATP has planted 2,998 fruit and decorative trees on the grounds of Malatia Sebastia’s Kindergarten No. 78. In the coming year, ATP plans to plant another 150 trees and include the young students in its environmental education lessons.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Support ATP’s 25th Anniversary today! Contact us for more <br />
+                                information at: <span>jeanmarie@armeniatree.org</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+        <!--Footer Section-->
+
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">Glossary</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('contact') }}">Contact Us</a>
+                            </li><li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <ul>
+                            <li class="hidden">
+                                <a href="#">FAQ</a>
+                            </li>
+                            <li class="hidden">
+                                <a href="#">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                        <p class="hashtag">#GetRooted</p>
+                        <a target="_blank" href="https://www.facebook.com/armeniatree">
+                            <img src="../img/facebook-logo.svg" alt="facebook">
+                        </a>
+                        <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                            <img src="../img/twitter-logo.svg" alt="twitter">
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                            <img src="../img/instagram-logo.svg" alt="instagram">
+                        </a>
+                        <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                            <img src="../img/youtube.svg" alt="youtube">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!-- Custom Js Files-->
+        <script src="{{ asset('js/main.js') }}"></script>
+
+    {% endblock %}

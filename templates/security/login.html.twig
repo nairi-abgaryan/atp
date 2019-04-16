@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% block nav %}{% endblock %}
+
+<div class="admin-login-wrapper">
+    <div class="login-inputs-wrapper">
+        <div class="form-content-wrapper">
+            <img src="./img/logo_black.svg" alt="facebook">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <label for="inputUsername">USERNAME</label>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername"  placeholder="Your Username" required autofocus>
+                <label for="inputPassword">PASSWORD</label>
+                <input type="password" name="password" id="inputPassword"  placeholder="Your Password" required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="admin-signin-btn" type="submit" id="login_submit">
+                    Log in
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#inputUsername').val() && $('#inputPassword').val()){
+                $('.admin-signin-btn').css({"background-color": "#6FD054", "border": "1px solid #6FD054"});
+            }else{
+                $('.admin-signin-btn').css("background-color", "#777777");
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+    <script>
+        $('form').on('keyup change paste', 'input, select, textarea', function(){
+            if($('#inputUsername').val() && $('#inputPassword').val()){
+                $('#login_submit').addClass( "admin-signin-btn-enabled" );
+                $('#login_submit').removeClass( "admin-signin-btn" );
+            }else{
+                $('#login_submit').addClass( "admin-signin-btn" );
+                $('#login_submit').removeClass( "admin-signin-btn-enabled" );
+            }
+        });
+    </script>
+
+{% endblock %}

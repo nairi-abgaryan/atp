@@ -1,0 +1,187 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Armenia Tree Project - Tour and Plant</title>{% endblock %}
+{% block body %}
+
+
+
+
+    <section class="payment-info-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 col-xs-12">
+                    <h1>Payment Information</h1>
+                    {{ form_start(form) }}
+                        <div class="top-inputs-wrapper">
+                            <div>
+                                <label>ACCOUNT NUMBER *</label><br />
+                                {{ form_widget(form.accountnumber, { 'attr': {'maxlength': "19", 'placeholder': 'Your account number'} }) }}
+                                <div style="color: red;">{{ form_errors(form.accountnumber) }} </div>
+                            </div>
+                            <div>
+                                <label>ACCOUNT HOLDER *</label><br />
+                                {{ form_widget(form.accountholder, { 'attr': {'placeholder': 'Name on credit card'} }) }}
+                                <div style="color: red;">{{ form_errors(form.accountholder) }} </div>
+                            </div>
+                        </div>
+                        <div class="bottom-inputs-wrapper">
+                            <div>
+                                <label>EXPIRY DATE *</label><br />
+                                {{ form_widget(form.expirymonth, { 'attr': {'id': "month" } } ) }}
+                                <select name="month" id="month_selector">
+                                    <option value="" selected disabled>Month</option>
+                                </select>
+                                {{ form_widget(form.expiryyear, { 'attr': {'id': "year" } } ) }}
+                                <select name="year" id="year_selector">
+                                    <option value="" selected disabled>Year</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>CVV/CSV *</label><br />
+                                {{ form_widget(form.cvv, { 'attr': {'maxlength': "4", 'placeholder': 'CVV/CSV'}}) }}
+                                <div style="color: red;">{{ form_errors(form.cvv) }} </div>
+                            </div>
+                        </div>
+                        <div class="bottom-inputs-wrapper">
+                            <div>
+                                <label>PAY PERIOD *</label><br />
+                                {{ form_widget(form.period) }}
+                                <div style="color: red;">{{ form_errors(form.period) }} </div>
+                            </div>
+                            <div>
+                                <label>TERM *</label><br />
+                                {{ form_widget(form.term) }}
+                                <div style="color: red;">{{ form_errors(form.term) }} </div>
+                            </div>
+                        </div>
+                        <div class="bottom-inputs-wrapper">
+                            <div>
+                                <label>START DATE *</label><br />
+                                {{ form_widget(form.expirymonth) }}
+                                <select name="month" id="month_selector2">
+                                    <option value="" selected disabled>Month</option>
+                                </select>
+                                {{ form_widget(form.expiryyear) }}
+                                <select name="year" id="year_selector2">
+                                    <option value="" selected disabled>Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="">
+                                {{ form_widget(form.send, { 'attr': {'class': "donate-now", "style": "background-color: #6FD054"}}) }}
+                            </a>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 col-xs-12">
+                    <br><br>
+                    {% if error is defined %}
+                        {% if error is not null %}
+                            <p style="color: #ff3333; text-align: center; font-size: 15px;">* Declined. {{ error }}</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Footer Section-->
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">Glossary</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </li><li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <ul>
+                        <li class="hidden">
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li class="hidden">
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p> <span> Armenia Tree Project </span> <br> 400 West Cummings Park <br> Suite 3900, Woburn, MA 01801 USA <br> 617-926-TREE (8733)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="copyright-text">&copy; Copyright 1994-2019 Armenia Tree Project, a project of Armenian Assembly of America. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  social">
+                    <p class="hashtag">#GetRooted</p>
+                    <a target="_blank" href="https://www.facebook.com/armeniatree">
+                        <img src="../img/facebook-logo.svg" alt="facebook">
+                    </a>
+                    <a target="_blank" href="https://twitter.com/ArmeniaTree">
+                        <img src="../img/twitter-logo.svg" alt="twitter">
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/armeniatree/">
+                        <img src="../img/instagram-logo.svg" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/user/ArmeniaTreeProject">
+                        <img src="../img/youtube.svg" alt="youtube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Custom Js Files-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+
+    <script>
+
+        $("#month_selector").val("01").change();
+        $("#year_selector").val("2019").change();
+
+        $("#month_selector2").val("01").change();
+        $("#year_selector2").val("2019").change();
+
+        $("#form_send").on('click', function (event) {
+            var count = $("#form_accountnumber").val();
+            count = count.replace(/ /g , '');
+            $('#form_accountnumber').val(count);
+        });
+
+        $('#form_cvv').on('click', function () {
+            $(this).attr('type', 'password');
+        });
+    </script>
+
+
+    </body>
+    </html>
+{% endblock %}

@@ -28,7 +28,7 @@ class Event
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(
-     *     targetEntity="App\Entity\EventsLang",
+     *     targetEntity="App\Entity\EventLang",
      *     mappedBy="events",
      *     cascade={"persist", "remove"},
      *     fetch="EAGER",

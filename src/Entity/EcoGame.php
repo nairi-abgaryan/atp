@@ -33,7 +33,7 @@ class EcoGame
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(
-     *     targetEntity="App\Entity\EcogamesLang",
+     *     targetEntity="App\Entity\EcogameLang",
      *     mappedBy="ecogames",
      *     cascade={"persist", "remove"},
      *     fetch="EAGER",

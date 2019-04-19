@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Base\BaseVirtual;
 use App\Entity\Base\ImageEntity;
 use App\Entity\Base\TimestampableEntity;
 use App\Entity\Base\TitleEntityVirtual;
@@ -16,7 +17,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Feature
 {
-    use TitleEntityVirtual, ImageEntity, TimestampableEntity;
+    use TitleEntityVirtual, ImageEntity, TimestampableEntity, BaseVirtual;
 
     /**
      * @ORM\Id()
@@ -49,7 +50,7 @@ class Feature
      * @var ArrayCollection
      * @ORM\OneToMany(
      *     targetEntity="App\Entity\FeatureLang",
-     *     mappedBy="featureLang",
+     *     mappedBy="feature",
      *     cascade={"persist", "remove"},
      *     fetch="EXTRA_LAZY",
      *     orphanRemoval=true

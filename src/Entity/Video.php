@@ -31,7 +31,7 @@ class Video
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(
-     *     targetEntity="App\Entity\Videos\VideosContentLang",
+     *     targetEntity="App\Entity\VideoLang",
      *     mappedBy="videosContent",
      *     cascade={"persist", "remove"},
      *     fetch="EAGER",

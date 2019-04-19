@@ -8,8 +8,6 @@ namespace App\Entity\Base;
  */
 trait TextTopVirtualEntity
 {
-    use BaseVirtual;
-
     /**
      * @var string
      */

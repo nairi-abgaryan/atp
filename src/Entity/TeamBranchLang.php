@@ -22,7 +22,7 @@ class TeamBranchLang
 
     /**
      * @var TeamBranch
-     * @ORM\ManyToOne(targetEntity="App\Entity\Team\TeamBranches", inversedBy="entityLang")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TeamBranch", inversedBy="entityLang")
      */
     private $teamBranch;
 

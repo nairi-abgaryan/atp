@@ -6,7 +6,7 @@ namespace App\Entity\Base;
  * Trait TextBottomEntityVirtual
  * @package App\Entity\Base
  */
-trait   TextBottomEntityVirtual
+trait TextBottomEntityVirtual
 {
     /**
      * @var string

@@ -30,8 +30,8 @@ class FeatureRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder("feature");
 
         $qb
-            ->select("feature, featureLang")
-            ->leftJoin("feature.entityLang", "featureLang")
+            ->select("feature, entityLang")
+            ->leftJoin("feature.entityLang", "entityLang")
             ->innerJoin("App:Page", "pages", "WITH", "pages.linkName = :linkName")
             ->setParameter("linkName", $linkName);
 

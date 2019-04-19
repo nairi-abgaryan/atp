@@ -23,7 +23,7 @@ class PhotoLang
 
     /**
      * @var Photo
-     * @ORM\ManyToOne(targetEntity="App\Entity\Photo\Photo", inversedBy="entityLang")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Photo", inversedBy="entityLang")
      */
     private $photo;
 

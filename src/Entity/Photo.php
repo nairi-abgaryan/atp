@@ -27,7 +27,7 @@ class Photo
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(
-     *     targetEntity="App\Entity\Photo\PhotoLang",
+     *     targetEntity="App\Entity\PhotoLang",
      *     mappedBy="photo",
      *     cascade={"persist", "remove"},
      *     fetch="EAGER",

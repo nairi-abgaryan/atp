@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Base\LangEntity;
+use App\Entity\Base\TextEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TeamBranchLang
 {
+    use TextEntity, LangEntity;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -16,8 +20,30 @@ class TeamBranchLang
      */
     private $id;
 
+    /**
+     * @var TeamBranch
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team\TeamBranches", inversedBy="entityLang")
+     */
+    private $teamBranch;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return TeamBranch
+     */
+    public function getTeamBranch()
+    {
+        return $this->teamBranch;
+    }
+
+    /**
+     * @param TeamBranch $teamBranch
+     */
+    public function setTeamBranch(TeamBranch $teamBranch): void
+    {
+        $this->teamBranch = $teamBranch;
     }
 }

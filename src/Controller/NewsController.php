@@ -7,9 +7,6 @@ use App\Service\Pagination\PaginationFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Translation\Loader\CsvFileLoader;
-use Symfony\Component\Translation\Loader\YamlFileLoader;
-use Symfony\Component\Translation\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
